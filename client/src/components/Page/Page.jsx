@@ -20,9 +20,9 @@ export function Page(props) {
 
 
 
-const mapStateToProps = (status) => {
+const mapStateToProps = (state) => {
     return {
-        actualPage: status.actualPage
+        actualPage: state.actualPage
     }
 };
 

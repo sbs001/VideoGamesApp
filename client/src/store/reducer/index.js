@@ -1,4 +1,4 @@
-import { GET_PAGE } from '../actions/index.js';
+import { GET_PAGE, GET_DETAIL } from '../actions/index.js';
 
 const initialState = {
   actualPage: [],
@@ -14,6 +14,14 @@ const reducer = (state = initialState, action) => {
         actualPage: action.payload
       }
     }
+
+    case GET_DETAIL:{
+      return {
+        ...state,
+        videogameDetail: action.payload
+      }
+    }
+
     default: return state;
 
   }

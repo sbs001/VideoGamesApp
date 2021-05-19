@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import Page from '../Page/Page';
 import './Home.css';
-import { getPageVideogames } from '../../store/actions'
+import { getVideogamePage } from '../../store/actions'
 import { connect } from 'react-redux';
 
 
 export function Home(props) {
 
     useEffect(() => {
-        props.getPageVideogames(1)
+        props.getVideogamePage(1)
     }, [])
 
     // let actualPage = 1;
@@ -26,7 +26,7 @@ export function Home(props) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getPageVideogames: (page) => dispatch(getPageVideogames(page))
+        getVideogamePage: (page) => dispatch(getVideogamePage(page))
     }
 };
 

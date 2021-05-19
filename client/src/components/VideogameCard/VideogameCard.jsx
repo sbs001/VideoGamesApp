@@ -1,9 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './VideogameCard.css';
 
 export default function VideogameCard({props}){
 
-    console.log('......',props)
     return(
         <div>
             <img className='a' src={props.img} alt='' />
@@ -11,6 +11,10 @@ export default function VideogameCard({props}){
             {
                 props.genres.map(genre => <li>{genre.name}</li>)
             }
+
+            <Link to={`/home/videogame/${props.id}`}>
+                <button>Show more</button>
+            </Link>
         </div>
     )
 }

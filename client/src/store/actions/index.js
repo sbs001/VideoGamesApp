@@ -1,25 +1,30 @@
 import axios from 'axios';
 export const GET_PAGE = 'GET_PAGE';
+export const GET_DETAIL = 'GET_DETAIL';
 
-export const getPageVideogames = (page) => {
+export const getVideogamePage = (page) => {
     return function (dispatch) {
         return axios.get(`http://localhost:3001/videogames?page=${page}`)
             .then(response => dispatch({
                 type: GET_PAGE,
                 payload: response.data
             }))
-            
+
     }
 }
 
 
 
-export const getVideogame = (payload) => {
-    return {
-        type: 'RemoveTodo',
-        payload
+export const getVideogameDetail = (id) => {
+    return function (dispatch) {
+        return axios.get(`http://localhost:3001/videogames/${id}`)
+            .then(response => dispatch({
+                type: GET_DETAIL,
+                payload:response.data
+            }))
     }
 }
+
 
 export const toInProgress = (payload) => {
     return {
