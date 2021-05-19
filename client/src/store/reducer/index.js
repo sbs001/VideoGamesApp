@@ -1,11 +1,9 @@
-import { GET_PAGE, GET_DETAIL, RESTART_DETAIL } from '../actions/index.js';
+import { GET_PAGE, GET_DETAIL, RESTART_DETAIL, GET_GENRES } from '../actions/index.js';
 
 const initialState = {
   actualPage: [],
-  videogame: {
-    detail: {},
-    OK: false
-  }
+  videogame: { detail: {}, OK: false },
+  genres: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -29,6 +27,13 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         videogame: { detail: {}, OK: false }
+      }
+    }
+
+    case GET_GENRES: {
+      return {
+        ...state,
+        genres: action.payload
       }
     }
 

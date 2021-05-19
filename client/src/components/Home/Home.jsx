@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Page from '../Page/Page';
 import './Home.css';
-import { getVideogamePage } from '../../store/actions'
+import { getVideogamePage } from '../../store/actions/index'
 import { connect } from 'react-redux';
 
 
@@ -17,7 +17,7 @@ export function Home(props) {
     return (
         <div>
             <h1>Henry Videogames!</h1>
-
+            
             <Page />
         </div>
     )
