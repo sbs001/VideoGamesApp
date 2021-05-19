@@ -60,22 +60,37 @@ class VideogamesModel extends ModelCRUD {
 
             const videogames = await this.model.findAll({ include: Genre });
             res.json(await getPage(videogames, `${API_URL_GAMES}${API_KEY}`, page));
-            
+
         } catch (error) { next(error) }
 
     };
 
-
+    //ver
     getVideogameByID = async (req, res, next) => {
         try {
-            if (validate(req.params.id)) this.getByID(req, res, next);
+            const id = req.params.id;
 
-            const videogameApi = await axios.get(`${API_URL_GAMES}/${req.params.id}${API_KEY}`);
+            if (validate(req.params.id)) 
+                res.json(await this.model.findOne({ where: { id }, include: Genre }));
+            
+
+            const videogameApi = await axios.get(`${API_URL_GAMES}/${id}${API_KEY}`);
 
             videogameApi ? res.json(videogameApi.data) : res.sendStatus(404);
 
         } catch (error) { next(error) }
 
+    }
+
+    addGenres = async (req, res, next) => {
+        try {
+            const { videogameID, genresIDs } = req.body;
+
+            const videogame = await this.model.findByPk(videogameID);
+
+            genresIDs.forEach(genre => videogame.addGenre(genre.id));
+
+        } catch (error) { next(error) }
     }
 }
 

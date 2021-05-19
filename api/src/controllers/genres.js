@@ -14,7 +14,7 @@ _loadDB = async (model) => {
 class GenresModel extends ModelCRUD {
     constructor(model) {
         super(model);
-        // _loadDB(model);
+        _loadDB(model);
     }
 
 }
