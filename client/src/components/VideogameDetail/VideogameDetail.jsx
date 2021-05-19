@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom';
 
 
 export function VideogameDetail(props) {
-
+    
     useEffect(() => {
         props.getVideogameDetail(parseInt(props.match.params.id));
     }, [])
 
-    if(!props.videogame) return <div>loading</div>
+    if (!props.isOK) return <h1><strong>loading...</strong></h1>
     return (
         <div>
             <img className='a' src={props.videogame.background_image} alt='' />
@@ -20,7 +20,9 @@ export function VideogameDetail(props) {
             {
                 props.videogame.genres.map(genre => <li>{genre.name}</li>)
             }
-            {props.videogame.description}
+
+            <div dangerouslySetInnerHTML={{ __html: props.videogame.description }} />
+
             <p>{props.videogame.rating}</p>
             <p>{props.videogame.released}</p>
             {
@@ -37,7 +39,8 @@ export function VideogameDetail(props) {
 
 const mapStateToProps = (state) => {
     return {
-        videogame: state.videogameDetail
+        videogame: state.videogame.detail,
+        isOK: state.videogame.OK
     }
 };
 

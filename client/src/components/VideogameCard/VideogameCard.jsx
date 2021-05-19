@@ -1,10 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './VideogameCard.css';
+import { restartDetail } from '../../store/actions/index'
 
-export default function VideogameCard({props}){
+export function VideogameCard({ props }) {
 
-    return(
+    return (
         <div>
             <img className='a' src={props.img} alt='' />
             <h3>{props.name}</h3>
@@ -13,8 +15,11 @@ export default function VideogameCard({props}){
             }
 
             <Link to={`/home/videogame/${props.id}`}>
-                <button>Show more</button>
+                <button onClick={restartDetail()}>Show more</button>
             </Link>
         </div>
     )
-}
+};
+
+
+export default connect(null, { restartDetail })(VideogameCard);

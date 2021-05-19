@@ -1,8 +1,11 @@
-import { GET_PAGE, GET_DETAIL } from '../actions/index.js';
+import { GET_PAGE, GET_DETAIL, RESTART_DETAIL } from '../actions/index.js';
 
 const initialState = {
   actualPage: [],
-  videogameDetail: {}
+  videogame: {
+    detail: {},
+    OK: false
+  }
 };
 
 const reducer = (state = initialState, action) => {
@@ -15,10 +18,17 @@ const reducer = (state = initialState, action) => {
       }
     }
 
-    case GET_DETAIL:{
+    case GET_DETAIL: {
       return {
         ...state,
-        videogameDetail: action.payload
+        videogame: { detail: action.payload, OK: true }
+      }
+    }
+
+    case RESTART_DETAIL: {
+      return {
+        ...state,
+        videogame: { detail: {}, OK: false }
       }
     }
 
