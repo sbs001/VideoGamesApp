@@ -40,7 +40,7 @@ export function VideogameDetail(props) {
 const mapStateToProps = (state) => {
     return {
         videogame: state.videogame.detail,
-        isOK: state.videogame.OK
+        isOK: state.videogame.ok
     }
 };
 

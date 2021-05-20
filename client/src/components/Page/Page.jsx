@@ -4,12 +4,11 @@ import VideogameCard from '../VideogameCard/VideogameCard';
 import './Page.css';
 
 export function Page(props) {
-    console.log('-----', props.actualPage[0])
 
     return (
         <div>
             {props.actualPage.map(element => {
-                return <VideogameCard props={element} />
+                return <VideogameCard videogame={element} />
             })
             }
 

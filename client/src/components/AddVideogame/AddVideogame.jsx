@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import './AddVideogame.css';
-import { GenresForm } from '../GenresForm/GenresForm';
 
 
 export default function AddVideogames() {
 
     const [form, setForm] = useState({
-        name: '', description: '', rating: '', relaased: ''
+        name: '', description: '', rating: '...', relaased: ''
     });
 
 

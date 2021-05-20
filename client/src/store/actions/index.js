@@ -31,7 +31,8 @@ export const getVideogameDetail = (id) => {
 
 export const restartDetail = () => {
     return {
-        type : RESTART_DETAIL
+        type: RESTART_DETAIL,
+        payload: {}
     }
 }
 
