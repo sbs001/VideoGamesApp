@@ -5,7 +5,6 @@ import './VideogameCard.css';
 import { restartDetail } from '../../store/actions/index'
 
 export function VideogameCard(props) {
-
     return (
         <div>
             <img className='a' src={props.videogame.img} alt='' />

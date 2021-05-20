@@ -4,6 +4,16 @@ export const GET_DETAIL = 'GET_DETAIL';
 export const RESTART_DETAIL = 'RESTART_DETAIL';
 export const GET_GENRES = 'GET_GENRES';
 
+export const getGenres = () => {
+    return function (dispatch) {
+        return  axios.get('http://localhost:3001/genres')
+            .then(response => dispatch({
+                type: GET_GENRES,
+                payload: response.data
+            }))
+    }
+};
+
 
 export const getVideogamePage = (page) => {
     return function (dispatch) {
@@ -38,12 +48,3 @@ export const restartDetail = () => {
 
 
 
-export const getGenres = () => {
-    return function (dispatch) {
-        return axios.get(`http://localhost:3001/genres`)
-            .then(response => dispatch({
-                type: GET_GENRES,
-                payload: response.data
-            }))
-    }
-};

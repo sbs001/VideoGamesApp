@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom';
 
 
 export function VideogameDetail(props) {
-    
+
     useEffect(() => {
         props.getVideogameDetail(parseInt(props.match.params.id));
     }, [])
-
+    
     if (!props.isOK) return <h1><strong>loading...</strong></h1>
     return (
         <div>

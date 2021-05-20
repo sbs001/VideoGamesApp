@@ -2,8 +2,8 @@ import { GET_PAGE, GET_DETAIL, RESTART_DETAIL, GET_GENRES } from '../actions/ind
 
 const initialState = {
   actualPage: [],
-  videogame: { detail: {}, ok: false },
-  genres: []
+  genres:[],
+  videogame: { detail: {}, ok: false }
 };
 
 const reducer = (state = initialState, action) => {
@@ -30,7 +30,12 @@ const reducer = (state = initialState, action) => {
       }
     }
 
-
+    case GET_GENRES:{
+      return{
+        ...state,
+        genres: action.payload
+      }
+    }
     default: return state;
 
   }
