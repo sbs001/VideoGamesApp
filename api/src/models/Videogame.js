@@ -27,14 +27,23 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING
     },
 
-    raiting: {
-      type: DataTypes.DECIMAL
+    rating: {
+      type: DataTypes.STRING
     },
 
     platforms: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+
+    background_image: {
+      type: DataTypes.TEXT,
+    },
+
+    background_image_additional: {
+      type: DataTypes.TEXT,
     }
+
 
   });
 };

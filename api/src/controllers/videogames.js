@@ -1,5 +1,5 @@
 const { Videogame, Genre } = require('../db.js');
-const { validate } = require('uuid');
+const { validate, v4: uuidv4 } = require('uuid');
 const ModelCRUD = require('./index.js');
 const axios = require('axios');
 const { API_URL_GAMES, API_KEY } = process.env;
@@ -13,7 +13,7 @@ const filter = (results) => {
         return {
             id: game.id,
             name: game.name,
-            img: game.background_image,
+            background_image: game.background_image,
             genres: game.genres,
 
         }
@@ -70,9 +70,9 @@ class VideogamesModel extends ModelCRUD {
         try {
             const id = req.params.id;
 
-            if (validate(req.params.id)) 
+            if (validate(req.params.id))
                 res.json(await this.model.findOne({ where: { id }, include: Genre }));
-            
+
 
             const videogameApi = await axios.get(`${API_URL_GAMES}/${id}${API_KEY}`);
 
@@ -82,16 +82,22 @@ class VideogamesModel extends ModelCRUD {
 
     }
 
-    addGenres = async (req, res, next) => {
+    add = async (req, res, next) => {
         try {
-            const { videogameID, genresIDs } = req.body;
 
-            const videogame = await this.model.findByPk(videogameID);
+            const { genres, ...body } = req.body;
 
-            genresIDs.forEach(genre => videogame.addGenre(genre.id));
+            let videogame = await this.model.create({ ...body, id: uuidv4() });
+
+            genres.forEach(genre => videogame.addGenre(genre.id));
+
+            return res.json(videogame);
 
         } catch (error) { next(error) }
+
+
     }
+
 }
 
 const videogamesController = new VideogamesModel(Videogame);

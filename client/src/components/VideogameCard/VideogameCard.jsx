@@ -7,7 +7,7 @@ import { restartDetail } from '../../store/actions/index'
 export function VideogameCard(props) {
     return (
         <div>
-            <img className='a' src={props.videogame.img} alt='' />
+            <img className='a' src={props.videogame.background_image} alt='' />
             <h3>{props.videogame.name}</h3>
             {
                 props.videogame.genres.map(genre => <li>{genre.name}</li>)

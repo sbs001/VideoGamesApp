@@ -9,6 +9,5 @@ router.get('/:id', controller.getVideogameByID);
 
 router.post('/', controller.add);
 
-router.post('/add', controller.addGenres);
 
 module.exports = router;

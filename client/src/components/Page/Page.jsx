@@ -11,7 +11,7 @@ export function Page(props) {
                 return <VideogameCard videogame={element} />
             })
             }
-
+            {/* {console.log(props.actualPage[0].background_image)} */}
         </div>
     )
 };

@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import './AddVideogame.css';
 import axios from 'axios';
 import VideogamePosted from './VideogamePosted/VideogamePosted';
+import { IMG_EMPTY } from '../../consts';
 
 
 export function AddVideogames(props) {
 
-    const [form, setForm] = useState({ name: '', description: '', rating: '', released: '' });
-    const [errors, setErrors] = useState({ ...form, empty: false });
+    const [form, setForm] = useState({ name: '', description: '', rating: '', released: '', genres: [] });
+    const [imgs, setImgs] = useState({ background_image: '', background_image_additional: '' })
+    const [errors, setErrors] = useState({ ...form, genres: '', empty: false });
     const [videogamePosted, setVideogamePosted] = useState(false)
 
     useEffect(() => {
@@ -18,12 +20,22 @@ export function AddVideogames(props) {
 
     useEffect(() => {
         if (errors.empty)
-            axios.post('http://localhost:3001/videogames', { ...form, platforms: 'ps2' })
+            axios.post('http://localhost:3001/videogames', { ...form, platforms: 'ps2',...imgs })
                 .then(setVideogamePosted(true))
                 .catch(err => console.log(err));
 
     }, [errors.empty])
 
+    const handleInputImg = (e) => {
+        setImgs({ ...imgs, [e.target.name]: e.target.value })
+    }
+    const handleInputChecked = (e) => {
+        let arr = [...form[e.target.title]];
+
+        e.target.checked ? arr.push({ id: e.target.id, name: e.target.name }) : arr = arr.filter(el => el.id !== e.target.id)
+
+        setForm({ ...form, [e.target.title]: arr })
+    };
 
     const handleInputChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -49,6 +61,11 @@ export function AddVideogames(props) {
                 <textarea name='description' placeholder='...' onChange={handleInputChange} className={`${errors.description && 'danger'}`}></textarea>
                 {errors.description && <div className='danger '>{errors.description}</div>}<br /><br />
 
+                <label>Images (URL)**</label><br />
+                <input name='background_image' placeholder='Principal..' onChange={handleInputImg} /><br />
+                {imgs.background_image ? <img src={imgs.background_image} alt='IMAGE NOT FOUND' /> : <img src={IMG_EMPTY} />}<br />
+                <input name='background_image_additional' placeholder='Additional..' onChange={handleInputImg} alt='IMAGE NOT FOUND' /><br />
+                {imgs.background_image_additional ? <img src={imgs.background_image_additional} /> : <img src={IMG_EMPTY} />}<br /><br />
 
                 <label>Rating</label><br />
                 <input name='rating' type='range' min='0' max='10' step='.01' onChange={handleInputChange} className={`${errors.rating && 'danger'}`} />
@@ -69,11 +86,12 @@ export function AddVideogames(props) {
                 <label>xbox</label><br />
                 <br /><br />
 
-                <form name='fomra' onChange={(e) => console.log(e)}>
+                {errors.genres && <div className='danger '>{errors.genres}</div>}<br /><br />
+                <form name='fomra' >
                     {
                         props.genres.map(genre =>
                             <div>
-                                <input type='checkbox' name={genre.name} />
+                                <input type='checkbox' title='genres' id={genre.id} name={genre.name} onChange={handleInputChecked} />
                                 <label>{`${genre.name}    `}</label>
                             </div>
                         )
@@ -82,7 +100,7 @@ export function AddVideogames(props) {
                 </form>
                 <button type='submit' >ADD VIDEOGAME</button>
             </form>
-
+            {console.log(form)}
         </div>
     )
 };
@@ -103,7 +121,8 @@ const validate = (form => {
     let errors = {};
 
     for (const prop in form) {
-        if (!form[prop])
+
+        if (((Array.isArray(form[prop])) && (!form[prop].length)) || (!form[prop]))
             errors[prop] = `${prop} is required`
     }
 
