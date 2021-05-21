@@ -3,16 +3,15 @@ import { getGenres } from '../../store/actions/index'
 import { connect } from 'react-redux';
 import './AddVideogame.css';
 import axios from 'axios';
+import VideogamePosted from './VideogamePosted/VideogamePosted';
 
 
 export function AddVideogames(props) {
 
-    const [form, setForm] = useState({name: '', description: '', rating: '', released: ''});
+    const [form, setForm] = useState({ name: '', description: '', rating: '', released: '' });
+    const [errors, setErrors] = useState({ ...form, empty: false });
+    const [videogamePosted, setVideogamePosted] = useState(false)
 
-    const [errors, setErrors] = useState({ ...form, empty :false});
-
-    const [videogamePosted,setVideogamePosted] = useState(false)
-    
     useEffect(() => {
         props.getGenres()
     }, []);
@@ -34,18 +33,13 @@ export function AddVideogames(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors(validate(form))
+    };
 
-        if (errors.empty) 
-            axios.post('http://localhost:3001/videogames', {...form, platforms:'ps2'})
-            .then(setVideogamePosted(true))
-            .catch(err => console.log(err));
 
-    }
     return (
         <div>
-             {
-                 videogamePosted ?  <div className='popUp'><p>{form.name}</p><p>{form.description}</p><p>{form.rating}</p><p>{form.released}</p> </div> : null
-             }
+            {videogamePosted ? <VideogamePosted props={form} /> : null}
+
             <form onSubmit={handleSubmit}>
                 <label>Name</label>
                 <input name='name' placeholder='Name...' onChange={handleInputChange} className={`${errors.name && 'danger'}`} />
@@ -88,7 +82,7 @@ export function AddVideogames(props) {
                 </form>
                 <button type='submit' >ADD VIDEOGAME</button>
             </form>
-            
+
         </div>
     )
 };
