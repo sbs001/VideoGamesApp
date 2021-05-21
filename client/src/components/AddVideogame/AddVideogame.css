@@ -3,3 +3,10 @@
     border-color: rgb(232, 14, 14);
     border-radius: 1rem;
 }
+
+.popUp{
+    position: fixed;
+    width: 50%;
+    height: 50%;
+    background-color: rgba(107, 242, 70, 0.468)
+}

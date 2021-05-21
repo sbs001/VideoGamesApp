@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 export function VideogameDetail(props) {
 
     useEffect(() => {
-        props.getVideogameDetail(parseInt(props.match.params.id));
+        props.getVideogameDetail(props.match.params.id);
     }, [])
     
     if (!props.isOK) return <h1><strong>loading...</strong></h1>
@@ -26,7 +26,7 @@ export function VideogameDetail(props) {
             <p>{props.videogame.rating}</p>
             <p>{props.videogame.released}</p>
             {
-                props.videogame.platforms.map(e => <li>{e.platform.name}</li>)
+                // props.videogame.platforms.map(e => <li>{e.platform.name}</li>)
             }
 
             <Link to='/home'>

@@ -2,36 +2,50 @@ import React, { useEffect, useState } from 'react';
 import { getGenres } from '../../store/actions/index'
 import { connect } from 'react-redux';
 import './AddVideogame.css';
+import axios from 'axios';
 
 
 export function AddVideogames(props) {
 
+    const [form, setForm] = useState({name: '', description: '', rating: '', released: ''});
+
+    const [errors, setErrors] = useState({ ...form, empty :false});
+
+    const [videogamePosted,setVideogamePosted] = useState(false)
+    
     useEffect(() => {
         props.getGenres()
-    }, [])
+    }, []);
 
-    const [form, setForm] = useState({
-        name: '', description: '', rating: '', released: ''
-    });
+    useEffect(() => {
+        if (errors.empty)
+            axios.post('http://localhost:3001/videogames', { ...form, platforms: 'ps2' })
+                .then(setVideogamePosted(true))
+                .catch(err => console.log(err));
 
-    const [errors, setErrors] = useState({ ...form, disabled: true });
-
+    }, [errors.empty])
 
 
     const handleInputChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
-        if (!errors.disabled) e.target.className = '';
+        if (!errors.empty) e.target.className = '';
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setErrors(validate(form));
-        if (!errors.disabled) e.target[7].className = '';
+        setErrors(validate(form))
+
+        if (errors.empty) 
+            axios.post('http://localhost:3001/videogames', {...form, platforms:'ps2'})
+            .then(setVideogamePosted(true))
+            .catch(err => console.log(err));
+
     }
-
-
     return (
         <div>
+             {
+                 videogamePosted ?  <div className='popUp'><p>{form.name}</p><p>{form.description}</p><p>{form.rating}</p><p>{form.released}</p> </div> : null
+             }
             <form onSubmit={handleSubmit}>
                 <label>Name</label>
                 <input name='name' placeholder='Name...' onChange={handleInputChange} className={`${errors.name && 'danger'}`} />
@@ -72,10 +86,9 @@ export function AddVideogames(props) {
 
                     }
                 </form>
-                <button type='submit' className={`${!errors.disabled && 'danger'}`}>ADD VIDEOGAME</button>
-
+                <button type='submit' >ADD VIDEOGAME</button>
             </form>
-
+            
         </div>
     )
 };
@@ -100,7 +113,7 @@ const validate = (form => {
             errors[prop] = `${prop} is required`
     }
 
-    (!errors) ? errors.disabled = true : errors.disabled = false;
+    Object.keys(errors).length ? errors.empty = false : errors.empty = true;
 
     return errors;
 });
