@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from "react-redux";
+import { searchVideogame } from '../../store/actions/index'
+import './SearchBar.css';
 
+export function SearchBar(props) {
 
-export default function SearchBar() {
+    const [input, setInput] = useState('');
 
+    const handleInputChange = (e) => {
+        setInput(e.target.value);
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        props.searchVideogame(input)
+    }
     return (
-        <form>
-            <input type="text" placeholder="Search..." />
+        <form onSubmit={handleSubmit}>
+            <input type="text" placeholder="Search..." onChange={handleInputChange} />
             <input type="submit" value="Search" />
         </form>
     )
 }
+
+export default connect(null, { searchVideogame })(SearchBar);

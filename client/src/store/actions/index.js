@@ -25,6 +25,17 @@ export const getPlatforms = () => {
     }
 };
 
+export const searchVideogame = (name) => {
+    return function (dispatch) {
+        return axios.get(`http://localhost:3001/videogames?name=${name}`)
+        .then(response => dispatch({
+            type: GET_PAGE,
+            payload: response.data
+        }))
+    }
+
+};
+
 
 export const getVideogamePage = (page) => {
     return function (dispatch) {
