@@ -1,4 +1,4 @@
-const { Videogame, Genre } = require('../db.js');
+const { Videogame, Genre, Platform} = require('../db.js');
 const { validate, v4: uuidv4 } = require('uuid');
 const ModelCRUD = require('./index.js');
 const axios = require('axios');
@@ -71,7 +71,7 @@ class VideogamesModel extends ModelCRUD {
             const id = req.params.id;
 
             if (validate(req.params.id))
-                res.json(await this.model.findOne({ where: { id }, include: Genre }));
+                res.json(await this.model.findOne({ where: { id }, include: [Genre, Platform] }));
 
 
             const videogameApi = await axios.get(`${API_URL_GAMES}/${id}${API_KEY}`);
@@ -85,12 +85,12 @@ class VideogamesModel extends ModelCRUD {
     add = async (req, res, next) => {
         try {
 
-            const { genres, ...body } = req.body;
+            const { genres,platforms, ...body } = req.body;
 
             let videogame = await this.model.create({ ...body, id: uuidv4() });
 
             genres.forEach(genre => videogame.addGenre(genre.id));
-
+            platforms.forEach(plat => videogame.addPlatform(plat.id))
             return res.json(videogame);
 
         } catch (error) { next(error) }
