@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getGenres } from '../../store/actions/index'
+import { getGenres,getPlatforms } from '../../store/actions/index'
 import { connect } from 'react-redux';
 import './AddVideogame.css';
 import axios from 'axios';
@@ -9,18 +9,19 @@ import { IMG_EMPTY } from '../../consts';
 
 export function AddVideogames(props) {
 
-    const [form, setForm] = useState({ name: '', description: '', rating: '', released: '', genres: [] });
+    const [form, setForm] = useState({ name: '', description: '', rating: '', released: '', genres: [], platforms: [] });
     const [imgs, setImgs] = useState({ background_image: '', background_image_additional: '' })
-    const [errors, setErrors] = useState({ ...form, genres: '', empty: false });
+    const [errors, setErrors] = useState({ ...form, genres: '',platforms:'', empty: false });
     const [videogamePosted, setVideogamePosted] = useState(false)
 
     useEffect(() => {
-        props.getGenres()
+        props.getGenres();
+        props.getPlatforms();
     }, []);
 
     useEffect(() => {
         if (errors.empty)
-            axios.post('http://localhost:3001/videogames', { ...form, platforms: 'ps2',...imgs })
+            axios.post('http://localhost:3001/videogames', { ...form, ...imgs })
                 .then(setVideogamePosted(true))
                 .catch(err => console.log(err));
 
@@ -77,22 +78,26 @@ export function AddVideogames(props) {
                 <input name='released' type='date' onChange={handleInputChange} className={`${errors.released && 'danger'}`} />
                 {errors.released && <div className='danger '>{errors.released}</div>}<br /><br />
 
-                <label>Platforms</label><br />
-                <input name='platforms' type='checkbox' />
-                <label>ps2</label><br />
-                <input name='platforms' type='checkbox' />
-                <label>pc</label><br />
-                <input name='platforms' type='checkbox' />
-                <label>xbox</label><br />
-                <br /><br />
-
-                {errors.genres && <div className='danger '>{errors.genres}</div>}<br /><br />
+               {errors.genres && <div className='danger '>{errors.genres}</div>}<br /><br />
                 <form name='fomra' >
                     {
                         props.genres.map(genre =>
                             <div>
                                 <input type='checkbox' title='genres' id={genre.id} name={genre.name} onChange={handleInputChecked} />
                                 <label>{`${genre.name}    `}</label>
+                            </div>
+                        )
+
+                    }
+                </form>
+
+                {errors.platforms && <div className='danger '>{errors.platforms}</div>}<br /><br /> 
+                <form name='fomra' >
+                    {
+                        props.platforms.map(platform =>
+                            <div>
+                                <input type='checkbox' title='platforms' id={platform.id} name={platform.name} onChange={handleInputChecked} />
+                                <label>{`${platform.name}    `}</label>
                             </div>
                         )
 
@@ -108,11 +113,12 @@ export function AddVideogames(props) {
 
 const mapStateToProps = (state) => {
     return {
-        genres: state.genres
+        genres: state.genres,
+        platforms: state.platforms
     }
 }
 
-export default connect(mapStateToProps, { getGenres })(AddVideogames);
+export default connect(mapStateToProps, { getGenres, getPlatforms })(AddVideogames);
 
 
 
