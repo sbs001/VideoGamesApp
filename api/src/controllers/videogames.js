@@ -53,7 +53,7 @@ class VideogamesModel extends ModelCRUD {
             const { name, page } = req.query;
 
             if (name) {
-                const videogamesLocal = await this.model.findAll({ where: { name } });
+                const videogamesLocal = await this.model.findAll({ where: { name }, include: Genre });
 
                 return res.json(await getPage(videogamesLocal, `${API_URL_GAMES}${API_KEY}&search=${name}`));
             }

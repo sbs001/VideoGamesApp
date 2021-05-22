@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { getVideogameDetail } from '../../store/actions/index'
+import { getVideogameDetail } from '../../store/actions/videogamesActions'
 import { connect } from 'react-redux';
 import './VideogameDetail.css';
 import { Link } from 'react-router-dom';

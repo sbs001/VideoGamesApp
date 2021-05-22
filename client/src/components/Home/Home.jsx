@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Page from '../Page/Page';
 import './Home.css';
-import { getVideogamePage } from '../../store/actions/index'
+import { getVideogamePage } from '../../store/actions/videogamesActions'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 

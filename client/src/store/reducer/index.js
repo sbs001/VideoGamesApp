@@ -1,4 +1,4 @@
-import { GET_PAGE, GET_DETAIL, RESTART_DETAIL, GET_GENRES, GET_PLATFORMS } from '../actions/index.js';
+import { GET_PAGE, GET_DETAIL, RESTART_STATE, GET_GENRES, GET_PLATFORMS } from '../../consts';
 
 const initialState = {
   actualPage: [],
@@ -24,10 +24,10 @@ const reducer = (state = initialState, action) => {
       }
     }
 
-    case RESTART_DETAIL: {
+    case RESTART_STATE: {
       return {
         ...state,
-        videogame: { detail: action.payload, ok: false }
+        videogame: { detail: {}, ok: false }
       }
     }
 

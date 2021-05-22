@@ -1,69 +1,21 @@
 import axios from 'axios';
-export const GET_PAGE = 'GET_PAGE';
-export const GET_DETAIL = 'GET_DETAIL';
-export const RESTART_DETAIL = 'RESTART_DETAIL';
-export const GET_GENRES = 'GET_GENRES';
-export const GET_PLATFORMS = 'GET_PLATFORMS';
+import { RESTART_STATE } from '../../consts'
 
-export const getGenres = () => {
+
+export const get = (url, actionType) => {
     return function (dispatch) {
-        return  axios.get('http://localhost:3001/genres')
+        return axios.get(url)
             .then(response => dispatch({
-                type: GET_GENRES,
-                payload: response.data
-            }))
-    }
-};
-
-export const getPlatforms = () => {
-    return function (dispatch) {
-        return  axios.get('http://localhost:3001/platforms')
-            .then(response => dispatch({
-                type: GET_PLATFORMS,
-                payload: response.data
-            }))
-    }
-};
-
-export const searchVideogame = (name) => {
-    return function (dispatch) {
-        return axios.get(`http://localhost:3001/videogames?name=${name}`)
-        .then(response => dispatch({
-            type: GET_PAGE,
-            payload: response.data
-        }))
-    }
-
-};
-
-
-export const getVideogamePage = (page) => {
-    return function (dispatch) {
-        return axios.get(`http://localhost:3001/videogames?page=${page}`)
-            .then(response => dispatch({
-                type: GET_PAGE,
-                payload: response.data
-            }))
-
-    }
-}
-
-
-
-export const getVideogameDetail = (id) => {
-    return function (dispatch) {
-        return axios.get(`http://localhost:3001/videogames/${id}`)
-            .then(response => dispatch({
-                type: GET_DETAIL,
+                type: actionType,
                 payload: response.data
             }))
     }
 }
 
 
-export const restartDetail = () => {
+export const restartStatus = () => {
     return {
-        type: RESTART_DETAIL,
+        type: RESTART_STATE,
         payload: {}
     }
 }

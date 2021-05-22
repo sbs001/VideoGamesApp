@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from "react-redux";
-import { searchVideogame } from '../../store/actions/index'
+import { searchVideogame } from '../../store/actions/videogamesActions'
 import './SearchBar.css';
 
 export function SearchBar(props) {
@@ -9,11 +9,14 @@ export function SearchBar(props) {
 
     const handleInputChange = (e) => {
         setInput(e.target.value);
-    }
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.searchVideogame(input)
-    }
+        props.searchVideogame(input);
+    
+    };
+
     return (
         <form onSubmit={handleSubmit}>
             <input type="text" placeholder="Search..." onChange={handleInputChange} />

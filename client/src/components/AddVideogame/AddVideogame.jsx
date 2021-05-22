@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { getGenres,getPlatforms } from '../../store/actions/index'
+import { getGenres } from '../../store/actions/genresActions'
+import { getPlatforms } from '../../store/actions/platformsActions'
 import { connect } from 'react-redux';
 import './AddVideogame.css';
 import axios from 'axios';
 import VideogamePosted from './VideogamePosted/VideogamePosted';
-import { IMG_EMPTY } from '../../consts';
+import { IMG_EMPTY, URL_VIDEOGAMES } from '../../consts';
 
 
 export function AddVideogames(props) {
@@ -21,7 +22,7 @@ export function AddVideogames(props) {
 
     useEffect(() => {
         if (errors.empty)
-            axios.post('http://localhost:3001/videogames', { ...form, ...imgs })
+            axios.post(URL_VIDEOGAMES, { ...form, ...imgs })
                 .then(setVideogamePosted(true))
                 .catch(err => console.log(err));
 
