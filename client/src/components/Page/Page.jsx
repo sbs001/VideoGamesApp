@@ -6,14 +6,17 @@ import './Page.css';
 export function Page(props) {
 
     return (
-        <div>
-            {props.actualPage.map(element => {
-                return <VideogameCard videogame={element} />
-            })
-            }
+        <div className='page'>
+            { props.actualPage.map(element => {
+                return (
+                    <div className='cards'>
+                        <VideogameCard videogame={element}  />
+                    </div>)
+            })}
         </div>
     )
-};
+
+}
 
 
 

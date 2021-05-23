@@ -46,7 +46,9 @@ export function AddVideogames(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setErrors(validate(form))
+        setErrors(validate(form));
+        document.getElementById('addVideogame').reset()
+
     };
 
 
@@ -54,7 +56,7 @@ export function AddVideogames(props) {
         <div>
             {videogamePosted ? <VideogamePosted props={form} /> : null}
 
-            <form onSubmit={handleSubmit}>
+            <form id='addVideogame' onSubmit={handleSubmit}>
                 <label>Name</label>
                 <input name='name' placeholder='Name...' onChange={handleInputChange} className={`${errors.name && 'danger'}`} />
                 {errors.name && <div className='danger '>{errors.name}</div>}<br /><br />
@@ -106,7 +108,6 @@ export function AddVideogames(props) {
                 </form>
                 <button type='submit' >ADD VIDEOGAME</button>
             </form>
-            {console.log(form)}
         </div>
     )
 };

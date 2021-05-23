@@ -5,11 +5,11 @@ import SearchBar from './SearchBar.jsx';
 
 export default function Nav() {
     return (
-        <div>
-            <nav>
-                <NavLink to='/home'>Home</NavLink>
-                <NavLink to='/about'>About</NavLink>
-                <SearchBar />
+        <div className='cntNav'>
+            <nav className='nav'>
+                <NavLink to='/home' className='navLink'>Home</NavLink>
+                <NavLink to='/about' className='navLink'>About</NavLink>
+                <SearchBar  />
             </nav>
 
         </div>

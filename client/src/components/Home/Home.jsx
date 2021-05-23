@@ -5,7 +5,6 @@ import { getVideogamePage } from '../../store/actions/videogamesActions'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-
 export function Home(props) {
 
     useEffect(() => {
@@ -15,12 +14,23 @@ export function Home(props) {
 
 
     return (
-        <div>
-            <h1>Henry Videogames!</h1>
-            <Link to='/home/add'>
-                <button>ADD</button>
-            </Link>
-            <Page />
+        <div className='home'>
+            <div className='imgHome'>
+                <h1>Henry Videogames!</h1>
+                <Link to='/home/add'>
+                    <button>ADD</button>
+                </Link>
+            </div>
+
+            <div className='homePage'>
+                <div className='filter'>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#clients">Clients</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <Page />
+            </div>
         </div>
     )
 };

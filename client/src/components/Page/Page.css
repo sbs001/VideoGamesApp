@@ -1,0 +1,23 @@
+.page {
+    border: black 1px solid;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: space-around;
+    align-items: center;
+    background: #C04848;
+    background: -webkit-linear-gradient(to right, #480048, #C04848);
+    background: linear-gradient(to right, #480048, #C04848);
+    overflow: auto;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    width: 20%;
+    height: 21rem;
+    border: rgba(245, 245, 245, 0.557) 1px solid;
+    border-radius: 2rem;
+    margin-block: 1rem;
+}

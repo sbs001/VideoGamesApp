@@ -14,11 +14,12 @@ export function SearchBar(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         props.searchVideogame(input);
+        document.getElementById('searchBar').reset()
     
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form id='searchBar' onSubmit={handleSubmit}>
             <input type="text" placeholder="Search..." onChange={handleInputChange} />
             <input type="submit" value="Search" />
         </form>

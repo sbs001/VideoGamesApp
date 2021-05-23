@@ -1,4 +1,50 @@
-.a{
-    width: 35%;
-    height: 35%;
+.card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-radius: 2rem;
+    background: #ad5389;
+    background: -webkit-linear-gradient(to right, #3c1053, #ad5389);
+    background: linear-gradient(to right, #3c1053, #ad5389);
+    box-shadow: 1px 4px 8px 0 rgba(0, 0, 0, 0);
+    transition: 0.3s;
+}
+
+.card:hover {
+    box-shadow: 1rem 12px 20px 1rem rgba(0, 0, 0, 0.304);
+    transform: scale(1.1);
+    transition: 0.2s;
+}
+
+.card h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1px;
+    display: flex;
+    width: 100%;
+    height: 10%;
+    color: white;
+}
+
+.genresCard {
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+    height: 20%;
+}
+
+.ctnImg {
+    display: flex;
+    justify-content: center;
+    height: 60%;
+}
+
+.imgCard {
+    width: 100%;
+    border-radius: 2rem 2rem 0 0;
 }

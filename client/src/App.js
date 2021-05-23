@@ -11,8 +11,8 @@ import AddVideogames from './components/AddVideogame/AddVideogame';
 function App() {
   return (
     <div className="App">
-      <Route path='/home' component={Nav} />
       <Route exact path='/' component={LandingPage} />
+      <Route path='/home' component={Nav} />
       <Route exact path='/home' component={Home} />
       <Route path='/home/videogame/:id' render={({ match }) => <VideogameDetail match={match} />} />
       <Route path= '/home/add' component={AddVideogames} />

@@ -1,0 +1,34 @@
+.cntNav {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background: #232526;
+    background: -webkit-linear-gradient(to right, #414345, #232526);
+    background: linear-gradient(to right, #414345, #232526);
+}
+
+.nav {
+    overflow: hidden;
+    background-color: rgb(51, 51, 51);
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.navLink {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navLink:hover {
+    background: #e6e2e2;
+    color: black;
+    transform: scale(1.2);
+    transition: 0.2s;
+}

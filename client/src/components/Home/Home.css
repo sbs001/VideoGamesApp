@@ -1,0 +1,43 @@
+    .home {
+        display: flex;
+        flex-direction: column;
+        height: 800px;
+    }
+    
+    .homePage {
+        display: flex;
+        flex-direction: row;
+        height: 80%;
+    }
+    
+    .filter {
+        height: 100%;
+        width: 10%;
+        background-color: #111;
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
+    
+    .filter a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+    }
+    
+    .filter a:hover {
+        color: #f1f1f1;
+    }
+    
+    .imgHome {
+        height: 20%;
+        background-image: url('../../imgs/mario.jpg');
+        background-position: center;
+        background-size: cover;
+        background-size: 90% 180%;
+    }
+    
+    .imgHome h1 {
+        color: white;
+    }

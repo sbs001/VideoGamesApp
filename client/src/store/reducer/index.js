@@ -27,7 +27,7 @@ const reducer = (state = initialState, action) => {
     case RESTART_STATE: {
       return {
         ...state,
-        videogame: { detail: {}, ok: false }
+        initialState
       }
     }
 
