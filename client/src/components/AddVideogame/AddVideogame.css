@@ -1,12 +1,19 @@
-.danger{
+.danger {
     color: rgb(232, 14, 14);
     border-color: rgb(232, 14, 14);
     border-radius: 1rem;
 }
 
-.popUp{
+.popUp {
     position: fixed;
     width: 50%;
     height: 50%;
     background-color: rgba(107, 242, 70, 0.468)
+}
+
+#addVideogame {
+    background-image: url('../../imgs/fondo3.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: blueviolet;
 }

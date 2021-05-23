@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import VideogameCard from '../VideogameCard/VideogameCard';
 import './Page.css';
 
+
 export function Page(props) {
 
     return (
@@ -10,7 +11,7 @@ export function Page(props) {
             { props.actualPage.map(element => {
                 return (
                     <div className='cards'>
-                        <VideogameCard videogame={element}  />
+                            <VideogameCard videogame={element} />
                     </div>)
             })}
         </div>

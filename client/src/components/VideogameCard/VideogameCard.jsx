@@ -8,7 +8,9 @@ export function VideogameCard(props) {
     return (
         <div className='card'>
             <div className='ctnImg'>
-                <img className='imgCard' src={props.videogame.background_image} alt='' />
+                <Link to={`/home/videogame/${props.videogame.id}`}>
+                    <img className='imgCard' src={props.videogame.background_image} alt='' />
+                </Link>
             </div>
             <h3>{props.videogame.name}</h3>
 
@@ -16,9 +18,6 @@ export function VideogameCard(props) {
                 {props.videogame.genres.map(genre => <li>{genre.name}</li>)}
             </div>
 
-            <Link to={`/home/videogame/${props.videogame.id}`}>
-                <button onClick={() => props.restartStatus()}>Show more</button>
-            </Link>
         </div>
     )
 };

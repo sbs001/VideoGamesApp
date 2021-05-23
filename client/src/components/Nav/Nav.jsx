@@ -7,9 +7,9 @@ export default function Nav() {
     return (
         <div className='cntNav'>
             <nav className='nav'>
+                <SearchBar  />
                 <NavLink to='/home' className='navLink'>Home</NavLink>
                 <NavLink to='/about' className='navLink'>About</NavLink>
-                <SearchBar  />
             </nav>
 
         </div>

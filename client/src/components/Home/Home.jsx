@@ -4,6 +4,7 @@ import './Home.css';
 import { getVideogamePage } from '../../store/actions/videogamesActions'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Menu from './Menu/Menu';
 
 export function Home(props) {
 
@@ -14,21 +15,15 @@ export function Home(props) {
 
 
     return (
-        <div className='home'>
+        <div className='home' onScroll={(e) => console.log(e)}>
             <div className='imgHome'>
-                <h1>Henry Videogames!</h1>
                 <Link to='/home/add'>
                     <button>ADD</button>
                 </Link>
             </div>
 
             <div className='homePage'>
-                <div className='filter'>
-                    <a href="#about">About</a>
-                    <a href="#services">Services</a>
-                    <a href="#clients">Clients</a>
-                    <a href="#contact">Contact</a>
-                </div>
+                <Menu />
                 <Page />
             </div>
         </div>
