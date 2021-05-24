@@ -10,26 +10,47 @@ export function VideogameDetail(props) {
     useEffect(() => {
         props.getVideogameDetail(props.match.params.id);
     }, [])
-    
+
     if (!props.isOK) return <h1><strong>loading...</strong></h1>
     return (
-        <div>
-            <img className='a' src={props.videogame.background_image} alt='' />
-            <img className='a' src={props.videogame.background_image_additional} alt='' />
-            <h3>{props.videogame.name}</h3>
-            
-            { props.videogame.genres.map(genre => <li>{genre.name}</li>)}
+        <div className='detail'>
+            <div className='back'>
 
-            <div dangerouslySetInnerHTML={{ __html: props.videogame.description }} />
+                <div className='div1'>
+                    <img className='imgDetail' src={props.videogame.background_image} alt='' />
+                    <div className='div1-1'>
+                        <h1>{props.videogame.name}</h1>
+                        <div className='info'>
+                            <div className='list'>
+                            <span>Genres:</span>
+                                {props.videogame.genres.map(genre => <li>{genre.name}</li>)}
+                            </div>
+                            <div className='p'>
+                                <p>Rating: {props.videogame.rating}</p>
+                                <p>Released Date: {props.videogame.released}</p>
+                            </div>
+                            <div className='list'>
+                            <span>Platforms:</span>
+                                {props.videogame.platforms.map(e => e.name ? <li>{e.name}</li> : <li>{e.platform.name}</li>)}
+                            </div>
 
-            <p>{props.videogame.rating}</p>
-            <p>{props.videogame.released}</p>
-           
-            { props.videogame.platforms.map(e => e.name ? <li>{e.name}</li> :<li>{e.platform.name}</li>) }
+                        </div>
+                    </div>
+                </div>
 
-            <Link to='/home'>
-                <button>Home</button>
-            </Link>
+                <div className='div2'>
+
+                    <div className='description' dangerouslySetInnerHTML={{ __html: props.videogame.description }} />
+                    <img className='imgDetail' src={props.videogame.background_image_additional} alt='' />
+                </div>
+
+                <div className='div3'>
+                    <Link to='/home'>
+                        <button> {'<- Back'} </button>
+                    </Link>
+                </div>
+
+            </div>
         </div>
     )
 };
@@ -43,3 +64,4 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, { getVideogameDetail })(VideogameDetail)
+
