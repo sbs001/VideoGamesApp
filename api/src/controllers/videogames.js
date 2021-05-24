@@ -1,4 +1,4 @@
-const { Videogame, Genre, Platform} = require('../db.js');
+const { Videogame, Genre, Platform } = require('../db.js');
 const { validate, v4: uuidv4 } = require('uuid');
 const ModelCRUD = require('./index.js');
 const axios = require('axios');
@@ -15,13 +15,14 @@ const filter = (results) => {
             name: game.name,
             background_image: game.background_image,
             genres: game.genres,
+            rating: game.rating
 
         }
     })
 };
 
 
-const getFromApi = async (url) => {
+const getFromApi = async(url) => {
 
     const videogamesApi = await axios.get(url);
     return {
@@ -30,15 +31,21 @@ const getFromApi = async (url) => {
     };
 };
 
-const getPage = async (gamesObtained, urlApiPage, page = '1') => {
+const getPage = async(gamesObtained, urlApiPage, page = '1', genreId) => {
 
     const { videogamesApi, urlNextApiPage } = await getFromApi(urlApiPage);
     gamesObtained = [...gamesObtained, ...videogamesApi];
 
+    console.log('----', genreId)
+    if (genreId) {
+        console.log('entro')
+        gamesObtained = gamesObtained.filter(e => e.genres.find(genre => genre.id == genreId)); //filtro genres
+    }
+
     if (gamesObtained.length >= page * 15)
         return gamesObtained.slice((page * 15) - 15, page * 15);
 
-    return await getPage(gamesObtained, urlNextApiPage, page);
+    return await getPage(gamesObtained, urlNextApiPage, page, genreId);
 }
 
 
@@ -48,7 +55,7 @@ class VideogamesModel extends ModelCRUD {
 
     }
 
-    getAll = async (req, res, next) => {
+    getAll = async(req, res, next) => {
         try {
             const { name, page } = req.query;
 
@@ -66,7 +73,7 @@ class VideogamesModel extends ModelCRUD {
     };
 
     //ver
-    getVideogameByID = async (req, res, next) => {
+    getVideogameByID = async(req, res, next) => {
         try {
             const id = req.params.id;
 
@@ -82,12 +89,26 @@ class VideogamesModel extends ModelCRUD {
 
     }
 
-    add = async (req, res, next) => {
+    getByGenre = async(req, res, next) => {
+        try {
+            const genreId = req.params.genreId;
+
+            let videogames = await this.model.findAll({ include: Genre });
+            videogames = videogames.filter(e => e.genres.find(genre => genre.id == genreId));
+
+
+            res.json(await getPage(videogames, `${API_URL_GAMES}${API_KEY}`, '1', genreId));
+
+
+        } catch (error) { next(error) }
+    }
+
+    add = async(req, res, next) => {
         try {
 
-            const { genres,platforms, ...body } = req.body;
+            const { genres, platforms, ...body } = req.body;
 
-            let videogame = await this.model.create({ ...body, id: uuidv4() });
+            let videogame = await this.model.create({...body, id: uuidv4() });
 
             genres.forEach(genre => videogame.addGenre(genre.id));
             platforms.forEach(plat => videogame.addPlatform(plat.id))

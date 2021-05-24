@@ -9,5 +9,7 @@ router.get('/:id', controller.getVideogameByID);
 
 router.post('/', controller.add);
 
+router.get('/genre/:genreId', controller.getByGenre);
+
 
 module.exports = router;
