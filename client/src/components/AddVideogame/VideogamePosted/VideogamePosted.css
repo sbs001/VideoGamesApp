@@ -1,6 +1,46 @@
-.popUp{
+.popUp {
+    color: white;
+    background-image: url('../../../imgs/add.jpg');
+    background-position: center;
+    background-size: cover;
     position: fixed;
-    width: 50%;
-    height: 50%;
-    background-color: rgba(107, 242, 70, 0.468)
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 90%;
+}
+
+.popUp h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.popUp h2 {
+    margin: 2px;
+    font-size: 2rem;
+}
+
+.popUp h5 {
+    margin: 0;
+}
+
+.btn {
+    border: white 1px solid;
+    width: 20%;
+    height: 12%;
+    background-color: #232526;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popUp button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    font-style: oblique;
+    border: none;
+    color: white;
+    background-color: #232526;
 }

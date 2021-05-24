@@ -5,14 +5,21 @@ import { connect } from 'react-redux';
 import './AddVideogame.css';
 import axios from 'axios';
 import VideogamePosted from './VideogamePosted/VideogamePosted';
-import { IMG_EMPTY, URL_VIDEOGAMES } from '../../consts';
+import FormCheck from './Forms/FormCheck';
+import { URL_VIDEOGAMES } from '../../consts';
+import FormDescription from './Forms/FormDescription';
+import FormName from './Forms/FormName';
+import FormImg from './Forms/FormImg';
+import FormRating from './Forms/FormRating';
+import FormReleased from './Forms/FormReleased';
+
 
 
 export function AddVideogames(props) {
 
     const [form, setForm] = useState({ name: '', description: '', rating: '', released: '', genres: [], platforms: [] });
     const [imgs, setImgs] = useState({ background_image: '', background_image_additional: '' })
-    const [errors, setErrors] = useState({ ...form, genres: '',platforms:'', empty: false });
+    const [errors, setErrors] = useState({ ...form, genres: '', platforms: '', empty: false });
     const [videogamePosted, setVideogamePosted] = useState(false)
 
     useEffect(() => {
@@ -30,7 +37,9 @@ export function AddVideogames(props) {
 
     const handleInputImg = (e) => {
         setImgs({ ...imgs, [e.target.name]: e.target.value })
-    }
+
+    };
+
     const handleInputChecked = (e) => {
         let arr = [...form[e.target.title]];
 
@@ -47,67 +56,43 @@ export function AddVideogames(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors(validate(form));
-        document.getElementById('addVideogame').reset()
+
+        if (errors.empty)
+            document.getElementById('addVideogame').reset();
 
     };
 
 
     return (
-        <div>
+        <div className='addVideogames'>
+
             {videogamePosted ? <VideogamePosted props={form} /> : null}
+            <div className='ctnForm'>
+                <form id='addVideogame' onSubmit={handleSubmit}>
+                    <div className='ctn1'>
+                        <FormName onChange={handleInputChange} errors={errors} />
 
-            <form id='addVideogame' onSubmit={handleSubmit}>
-                <label>Name</label>
-                <input name='name' placeholder='Name...' onChange={handleInputChange} className={`${errors.name && 'danger'}`} />
-                {errors.name && <div className='danger '>{errors.name}</div>}<br /><br />
+                        <FormDescription onChange={handleInputChange} errors={errors} />
 
-                <label>Description</label>
-                <textarea name='description' placeholder='...' onChange={handleInputChange} className={`${errors.description && 'danger'}`}></textarea>
-                {errors.description && <div className='danger '>{errors.description}</div>}<br /><br />
+                        <FormRating onChange={handleInputChange} errors={errors} rating={form.rating} />
 
-                <label>Images (URL)**</label><br />
-                <input name='background_image' placeholder='Principal..' onChange={handleInputImg} /><br />
-                {imgs.background_image ? <img src={imgs.background_image} alt='IMAGE NOT FOUND' /> : <img src={IMG_EMPTY} />}<br />
-                <input name='background_image_additional' placeholder='Additional..' onChange={handleInputImg} alt='IMAGE NOT FOUND' /><br />
-                {imgs.background_image_additional ? <img src={imgs.background_image_additional} /> : <img src={IMG_EMPTY} />}<br /><br />
+                        <FormReleased onChange={handleInputChange} errors={errors} />
 
-                <label>Rating</label><br />
-                <input name='rating' type='range' min='0' max='10' step='.01' onChange={handleInputChange} className={`${errors.rating && 'danger'}`} />
-                <span>{form.rating}</span>
-                {errors.rating && <div className='danger '>{errors.rating}</div>}<br /><br />
+                        <div className='formCheckG'>
+                            <FormCheck data={props.genres} title='genres' onChange={handleInputChecked} errors={errors} />
+                        </div>
+                    </div>
+                    <div className='ctn2'>
+                        <FormImg onChange={handleInputImg} imgs={imgs} />
 
+                        <div className='formCheckP'>
+                            <FormCheck data={props.platforms} title='platforms' onChange={handleInputChecked} errors={errors} />
+                        </div>
+                    </div>
 
-                <label>Released</label>
-                <input name='released' type='date' onChange={handleInputChange} className={`${errors.released && 'danger'}`} />
-                {errors.released && <div className='danger '>{errors.released}</div>}<br /><br />
-
-               {errors.genres && <div className='danger '>{errors.genres}</div>}<br /><br />
-                <form name='fomra' >
-                    {
-                        props.genres.map(genre =>
-                            <div>
-                                <input type='checkbox' title='genres' id={genre.id} name={genre.name} onChange={handleInputChecked} />
-                                <label>{`${genre.name}    `}</label>
-                            </div>
-                        )
-
-                    }
+                    <button type='submit' >ADD VIDEOGAME</button>
                 </form>
-
-                {errors.platforms && <div className='danger '>{errors.platforms}</div>}<br /><br /> 
-                <form name='fomra' >
-                    {
-                        props.platforms.map(platform =>
-                            <div>
-                                <input type='checkbox' title='platforms' id={platform.id} name={platform.name} onChange={handleInputChecked} />
-                                <label>{`${platform.name}    `}</label>
-                            </div>
-                        )
-
-                    }
-                </form>
-                <button type='submit' >ADD VIDEOGAME</button>
-            </form>
+            </div>
         </div>
     )
 };
