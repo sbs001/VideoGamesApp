@@ -1,6 +1,6 @@
 .menu {
     height: 100%;
-    width: 10%;
+    width: 15%;
     background-color: #111;
     overflow-x: hidden;
     padding-top: 20px;
@@ -16,4 +16,24 @@
 
 .options a:hover {
     color: #f1f1f1;
+}
+
+.menu img {
+    width: 100%;
+}
+
+.options button {
+    border: none;
+    background-color: #111;
+    color: #818181;
+    padding: 6px 8px 6px 16px;
+    overflow-x: hidden;
+    font-size: 25px;
+    width: 100%;
+    border-block: black 1px solid;
+}
+
+.options button:hover {
+    color: #f1f1f1;
+    cursor: pointer;
 }

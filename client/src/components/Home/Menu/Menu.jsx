@@ -1,21 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Menu.css';
+import img from '../../../imgs/gamer-zone.jpg';
+
 
 export function Menu(props) {
+
+    const [side, setSide] = useState(false);
 
     return (
         <div className='menu'>
             <div className='options'>
-                <a >Add</a>
-                <a >Order by</a>
-                <a>A-Z</a>
-                <a>Z-A</a>
-                <a >Filter by</a>
-                <a>Genres</a>
-                <a>My video games</a>
-                <a>Web video games</a>
+                <a href='home/add'>Add new video game</a><br />
+                <button className='aa'>Web video games</button>
+                <button>My video games</button>
+                <button onClick={(e) => setSide(!side)} >By genres ▼ </button>
+                {side ? <p>sadda</p> : null}
 
             </div>
+            <img src={img} />
         </div>
     )
 };

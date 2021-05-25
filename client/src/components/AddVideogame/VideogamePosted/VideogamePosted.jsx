@@ -15,7 +15,7 @@ export default function ({props}) {
 
             <div className='btn'>
             <Link to='/home'>
-                <button> {'<-'} BACK</button>
+                <button> ⮨ BACK</button>
             </Link>
 
             </div>

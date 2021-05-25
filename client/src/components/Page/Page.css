@@ -1,9 +1,20 @@
+.ctnPage {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.btns {
+    display: flex;
+    width: 100%;
+}
+
 .page {
     border: black 1px solid;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 90%;
+    width: 100%;
     justify-content: space-around;
     align-items: center;
     overflow: auto;
@@ -24,4 +35,44 @@
     border: rgba(245, 245, 245, 0.557) 1px solid;
     border-radius: 2rem;
     margin-block: 2rem;
+}
+
+.btns {
+    height: 5%;
+    display: flex;
+    background-color: #111;
+    border: #111 2px solid;
+}
+
+.btns button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #111;
+    border: none;
+    width: 10%;
+    height: 100%;
+    color: #818181;
+    overflow-x: hidden;
+    font-size: 20px;
+    overflow-x: hidden;
+    cursor: pointer;
+    border-inline: black 1px solid;
+}
+
+.btns button:hover {
+    border-radius: 3rem;
+    color: #111;
+    background-color: whitesmoke;
+}
+
+.btns div {
+    font: oblique;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    background-color: #111;
+    color: whitesmoke;
 }

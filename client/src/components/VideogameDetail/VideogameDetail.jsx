@@ -46,7 +46,7 @@ export function VideogameDetail(props) {
 
                 <div className='div3'>
                     <Link to='/home'>
-                        <button> {'<- Back'} </button>
+                        <button> ⮨ Back</button>
                     </Link>
                 </div>
 

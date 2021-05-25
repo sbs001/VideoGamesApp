@@ -1,11 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './VideogameCard.css';
-import { restartStatus } from '../../store/actions/index'
 import altImg from '../../imgs/alt.jpg';
 
-export function VideogameCard(props) {
+export default function VideogameCard(props) {
     return (
         <div className='card'>
             <div className='ctnImg'>
@@ -23,5 +21,3 @@ export function VideogameCard(props) {
     )
 };
 
-
-export default connect(null, { restartStatus })(VideogameCard);
