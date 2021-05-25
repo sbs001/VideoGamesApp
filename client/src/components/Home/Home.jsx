@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Page from '../Page/Page';
 import './Home.css';
 import { getVideogamePage } from '../../store/actions/videogamesActions'

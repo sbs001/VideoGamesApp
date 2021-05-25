@@ -11,6 +11,7 @@ import FormName from './Forms/FormName';
 import FormImg from './Forms/FormImg';
 import FormRating from './Forms/FormRating';
 import FormReleased from './Forms/FormReleased';
+import img from '../../imgs/add.png'
 
 
 
@@ -32,7 +33,6 @@ export function AddVideogames(props) {
                 .catch(err => console.log(err));
 
     }, [errors.empty])
-
     const handleInputImg = (e) => {
         setImgs({ ...imgs, [e.target.name]: e.target.value })
 
@@ -86,6 +86,7 @@ export function AddVideogames(props) {
                         <div className='formCheckP'>
                             <FormCheck data={props.platforms} title='platforms' onChange={handleInputChecked} errors={errors} />
                         </div>
+                        <img className='imgAdd' src={img} alt='' />
                     </div>
 
                     <button type='submit' >ADD VIDEOGAME</button>
@@ -103,7 +104,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,{ getPlatforms })(AddVideogames);
+export default connect(mapStateToProps, { getPlatforms })(AddVideogames);
 
 
 

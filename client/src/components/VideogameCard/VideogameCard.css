@@ -33,6 +33,8 @@
 .genresCard {
     display: flex;
     flex-flow: column wrap;
+    color: grey;
+    font-style: italic;
     width: 100%;
     height: 15%;
 }

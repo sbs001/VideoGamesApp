@@ -10,7 +10,7 @@ import './Page.css';
 export function Page(props) {
 
     const [click, setClick] = useState('false');
-    useEffect(() => { setClick(!click) })
+
 
     const handleChangePages = (e) => {
         if (e.target.name === 'next') return props.getVideogamePage(props.page + 1);
@@ -18,14 +18,19 @@ export function Page(props) {
         return props.getVideogamePage();
     }
 
+    const handleClick = (e) => {
+        setClick(!click);
+        props[e.target.name](props.actualPage)
+    }
+
     return (
         <div className='ctnPage'>
             <div className='btns'>
                 <button id='x' name='x' onClick={handleChangePages} >❎</button>
-                <button onClick={() => props.sortAscending(props.actualPage)}>A-Z ⮭</button>
-                <button onClick={() => props.sortDescending(props.actualPage)}>Z-A ⮯</button>
-                <button onClick={() => props.sortRatingAsc(props.actualPage)}>★★★★☆</button>
-                <button onClick={() => props.sortRatingDes(props.actualPage)}>★☆☆☆☆</button>
+                <button name='sortAscending' onClick={handleClick}>A-Z ⮭</button>
+                <button name='sortDescending' onClick={handleClick}>Z-A ⮯</button>
+                <button name='sortRatingAsc' onClick={handleClick}>★★★★☆</button>
+                <button name='sortRatingDes' onClick={handleClick}>★☆☆☆☆</button>
 
                 <div>🎮 Video Games APP!</div>
 

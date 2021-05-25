@@ -11,8 +11,8 @@ export function Menu(props) {
     const [side, setSide] = useState(false);
 
     const handleGenreClick = (e) => { console.log('click'); props.getVideogameByGenre(e.target.id) };
-    
-    const handleClick = (e) =>{
+
+    const handleClick = (e) => {
         (e.target.name === 'web') ? props.getWebVideogames() : props.getMyVideogames()
     };
 
@@ -21,15 +21,14 @@ export function Menu(props) {
             <div className='options'>
                 <Link to='home/add'>Add new video game</Link><br />
 
-                <button name='web' onClick={handleClick}>Web video games</button>
-                
-                <button name='added' onClick={handleClick}>My video games</button>
+                <button className='btnOp' name='web' onClick={handleClick}>Web video games</button>
 
-                <button onClick={(e) => setSide(!side)} >By genres ▼ </button>
-                {!side ? null : props.genres.map(e => <button id={e.id} onClick={handleGenreClick}>{e.name}</button>)}
+                <button className='btnOp' name='added' onClick={handleClick}>My video games</button>
 
+                <button className='btnOp' onClick={(e) => setSide(!side)} >By genres ▼ </button>
+            {!side ? null : props.genres.map(e => <button className='btnMenu' id={e.id} onClick={handleGenreClick}>{e.name}</button>)}
             </div>
-            <img src={img} />
+            <img src={img} alt='' />
         </div>
     )
 };
@@ -39,12 +38,12 @@ const mapStateToProps = (state) => {
         genres: state.genres,
     }
 }
-const mapDispatchToProps = (dispatch) =>{
-    return{
-        getVideogameByGenre : (id) => dispatch(getVideogameByGenre(id)),
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getVideogameByGenre: (id) => dispatch(getVideogameByGenre(id)),
         getMyVideogames: () => dispatch(getMyVideogames()),
         getWebVideogames: (page) => dispatch(getWebVideogames(page))
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Menu);
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);
