@@ -21,7 +21,7 @@ export function SearchBar(props) {
     return (
         <form id='searchBar' onSubmit={handleSubmit}>
             <input className='searchInput' type="text" placeholder="Search..." onChange={handleInputChange} />
-            <input className='searchBtn' type="submit" value="Search" />
+            <input className='searchBtn' type="submit" value='Seacrh 🔍' />
             
         </form>
     )

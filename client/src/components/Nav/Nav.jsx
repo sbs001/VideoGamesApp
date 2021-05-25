@@ -8,8 +8,8 @@ export default function Nav() {
         <div className='cntNav'>
             <nav className='nav'>
                 <SearchBar  />
-                <NavLink to='/home' className='navLink'>Home</NavLink>
-                <NavLink to='/about' className='navLink'>About</NavLink>
+                <NavLink to='/home' className='navLink'>🏠 Home</NavLink>
+                <NavLink to='/about' className='navLink'>👤 About</NavLink>
             </nav>
 
         </div>

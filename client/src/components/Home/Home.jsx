@@ -1,20 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Page from '../Page/Page';
 import './Home.css';
 import { getVideogamePage } from '../../store/actions/videogamesActions'
 import { restartStatus } from '../../store/actions/index'
-
 import { connect } from 'react-redux';
 import Menu from './Menu/Menu';
+import { getGenres } from '../../store/actions/genresActions';
 
 export function Home(props) {
 
     useEffect(() => {
-
-        props.getVideogamePage(1);
+        if (props.page === null) props.getVideogamePage();
+        if (!props.genres.length) props.getGenres()
         props.restartStatus();
     }, [])
-
 
 
     return (
@@ -32,10 +31,18 @@ export function Home(props) {
 const mapDispatchToProps = (dispatch) => {
     return {
         getVideogamePage: (page) => dispatch(getVideogamePage(page)),
-        restartStatus: () => dispatch(restartStatus())
+        restartStatus: () => dispatch(restartStatus()),
+        getGenres: () => dispatch(getGenres()),
     }
 };
+const mapStateToProps = (state) => {
+    return {
+        actualPage: state.actualPage.page,
+        page: state.actualPage.number,
+        genres: state.genres,
+    }
+}
 
 
 
-export default connect(null, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

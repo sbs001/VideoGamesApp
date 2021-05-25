@@ -1,7 +1,7 @@
 import { GET_PAGE, GET_DETAIL, RESTART_DETAIL, GET_GENRES, GET_PLATFORMS, SORT_PAGE } from '../../consts';
 
 const initialState = {
-    actualPage: [],
+    actualPage: { page: [], number: null },
     genres: [],
     platforms: [],
     videogame: { detail: {}, ok: false }
@@ -12,12 +12,9 @@ const reducer = (state = initialState, action) => {
 
         case GET_PAGE:
             {
-                console.log('LLEGUE2')
-                console.log(action.payload)
-
                 return {
                     ...state,
-                    actualPage: action.payload
+                    actualPage: { page: action.payload, number: action.page }
                 }
             }
 
@@ -50,6 +47,13 @@ const reducer = (state = initialState, action) => {
                 return {
                     ...state,
                     platforms: action.payload
+                }
+            }
+        case SORT_PAGE:
+            {
+                return {
+                    ...state,
+                    actualPage: {...state.actualPage, page: action.payload }
                 }
             }
 

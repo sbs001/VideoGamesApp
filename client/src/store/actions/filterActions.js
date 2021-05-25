@@ -1,11 +1,8 @@
-import { GET_PAGE } from "../../consts"
+import { SORT_PAGE } from "../../consts"
 
 export const sortAscending = (arr) => {
-    console.log('LLEGUE1')
-    console.log(arr)
-
     return {
-        type: GET_PAGE,
+        type: SORT_PAGE,
         payload: arr.sort(function(a, b) {
             if (a.name.toUpperCase() > b.name.toUpperCase()) return 1;
             if (a.name.toUpperCase() < b.name.toUpperCase()) return -1;
@@ -15,7 +12,7 @@ export const sortAscending = (arr) => {
 }
 export const sortDescending = (arr) => {
     return {
-        type: GET_PAGE,
+        type: SORT_PAGE,
         payload: arr.sort(function(a, b) {
             if (a.name.toUpperCase() < b.name.toUpperCase()) return 1;
             if (a.name.toUpperCase() > b.name.toUpperCase()) return -1;
@@ -27,7 +24,7 @@ export const sortDescending = (arr) => {
 
 export const sortRatingAsc = (arr) => {
     return {
-        type: GET_PAGE,
+        type: SORT_PAGE,
         payload: arr.sort(function(a, b) {
             if (a.rating < b.rating) return 1;
             if (a.rating > b.rating) return -1;
@@ -40,7 +37,7 @@ export const sortRatingAsc = (arr) => {
 
 export const sortRatingDes = (arr) => {
     return {
-        type: GET_PAGE,
+        type: SORT_PAGE,
         payload: arr.sort(function(a, b) {
             if (a.rating > b.rating) return 1;
             if (a.rating < b.rating) return -1;

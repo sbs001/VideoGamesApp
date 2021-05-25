@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { getGenres } from '../../store/actions/genresActions'
 import { getPlatforms } from '../../store/actions/platformsActions'
 import { connect } from 'react-redux';
 import './AddVideogame.css';
@@ -23,7 +22,6 @@ export function AddVideogames(props) {
     const [videogamePosted, setVideogamePosted] = useState(false)
 
     useEffect(() => {
-        props.getGenres();
         props.getPlatforms();
     }, []);
 
@@ -105,7 +103,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { getGenres, getPlatforms })(AddVideogames);
+export default connect(mapStateToProps,{ getPlatforms })(AddVideogames);
 
 
 

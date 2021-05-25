@@ -1,20 +1,32 @@
 import React, { useState } from 'react';
 import './Menu.css';
 import img from '../../../imgs/gamer-zone.jpg';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getMyVideogames, getVideogameByGenre, getWebVideogames } from '../../../store/actions/videogamesActions';
 
 
 export function Menu(props) {
 
     const [side, setSide] = useState(false);
 
+    const handleGenreClick = (e) => { console.log('click'); props.getVideogameByGenre(e.target.id) };
+    
+    const handleClick = (e) =>{
+        (e.target.name === 'web') ? props.getWebVideogames() : props.getMyVideogames()
+    };
+
     return (
         <div className='menu'>
             <div className='options'>
-                <a href='home/add'>Add new video game</a><br />
-                <button className='aa'>Web video games</button>
-                <button>My video games</button>
+                <Link to='home/add'>Add new video game</Link><br />
+
+                <button name='web' onClick={handleClick}>Web video games</button>
+                
+                <button name='added' onClick={handleClick}>My video games</button>
+
                 <button onClick={(e) => setSide(!side)} >By genres ▼ </button>
-                {side ? <p>sadda</p> : null}
+                {!side ? null : props.genres.map(e => <button id={e.id} onClick={handleGenreClick}>{e.name}</button>)}
 
             </div>
             <img src={img} />
@@ -22,4 +34,17 @@ export function Menu(props) {
     )
 };
 
-export default Menu;
+const mapStateToProps = (state) => {
+    return {
+        genres: state.genres,
+    }
+}
+const mapDispatchToProps = (dispatch) =>{
+    return{
+        getVideogameByGenre : (id) => dispatch(getVideogameByGenre(id)),
+        getMyVideogames: () => dispatch(getMyVideogames()),
+        getWebVideogames: (page) => dispatch(getWebVideogames(page))
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Menu);

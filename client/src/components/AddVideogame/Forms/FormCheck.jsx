@@ -8,6 +8,7 @@ export default function FormCheck({ data, title, onChange, errors }) {
     return (
         <div className='formCheck'>
             <span> {(title === 'genres') ? 'Genres:' : 'Platforms:'}</span>
+            
             <form name='form' >
                 {data.map(elem =>
                     <div className='input'>

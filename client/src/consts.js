@@ -4,6 +4,9 @@ export const URL_VIDEOGAMES = URL_BASE + '/videogames';
 export const URL_VIDEOGAMES_PAGE = URL_VIDEOGAMES + '?page=';
 export const URL_VIDEOGAMES_DETAIL = URL_VIDEOGAMES + '/';
 export const URL_VIDEOGAMES_SEARCH = URL_VIDEOGAMES + '?name=';
+export const URL_VIDEOGAMES_BY_GENRE = URL_VIDEOGAMES + '/genre/';
+export const URL_VIDEOGAMES_ADDED = URL_VIDEOGAMES + '/added';
+export const URL_VIDEOGAMES_DEF = URL_VIDEOGAMES + '/default';
 
 
 export const URL_GENRES = URL_BASE + '/genres';

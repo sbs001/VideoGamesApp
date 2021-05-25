@@ -4,8 +4,6 @@ const ModelCRUD = require('./index.js');
 const axios = require('axios');
 const { API_URL_GAMES, API_KEY } = process.env;
 
-//https://api.rawg.io/api/games?key=41dfe0a01e19490c8cf7a4542ea5b2ba&search=sonic
-
 
 const filter = (results) => {
 
@@ -36,9 +34,7 @@ const getPage = async(gamesObtained, urlApiPage, page = '1', genreId) => {
     const { videogamesApi, urlNextApiPage } = await getFromApi(urlApiPage);
     gamesObtained = [...gamesObtained, ...videogamesApi];
 
-    console.log('----', genreId)
     if (genreId) {
-        console.log('entro')
         gamesObtained = gamesObtained.filter(e => e.genres.find(genre => genre.id == genreId)); //filtro genres
     }
 
@@ -72,7 +68,6 @@ class VideogamesModel extends ModelCRUD {
 
     };
 
-    //ver
     getVideogameByID = async(req, res, next) => {
         try {
             const id = req.params.id;
@@ -99,6 +94,22 @@ class VideogamesModel extends ModelCRUD {
 
             res.json(await getPage(videogames, `${API_URL_GAMES}${API_KEY}`, '1', genreId));
 
+
+        } catch (error) { next(error) }
+    }
+
+    getAdded = async(req, res, next) => {
+        try {
+            const a = await this.model.findAll({ include: Genre });
+            res.json(a);
+        } catch (error) { next(error) }
+    }
+
+    getOnlyApi = async(req, res, next) => {
+        try {
+
+            const { page } = req.query;
+            res.json(await getPage([], `${API_URL_GAMES}${API_KEY}`, page))
 
         } catch (error) { next(error) }
     }
