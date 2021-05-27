@@ -27,12 +27,13 @@ export function AddVideogames(props) {
     }, []);
 
     useEffect(() => {
-        if (errors.empty)
+        if (errors.empty){
             axios.post(URL_VIDEOGAMES, { ...form, ...imgs })
-                .then(setVideogamePosted(true))
                 .catch(err => console.log(err));
+                setVideogamePosted(true)}
 
-    }, [errors.empty])
+    }, [errors.empty]);
+    
     const handleInputImg = (e) => {
         setImgs({ ...imgs, [e.target.name]: e.target.value })
 

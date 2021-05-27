@@ -32,7 +32,7 @@
     justify-content: center;
     width: 20%;
     height: 19rem;
-    border: rgba(245, 245, 245, 0.557) 1px solid;
+    border: rgba(65, 6, 6, 0.557) 1px solid;
     border-radius: 2rem;
     margin-block: 2rem;
 }
@@ -87,4 +87,55 @@
     background-color: rgba(235, 12, 56, 0.907);
     align-items: center;
     width: 3%;
+}
+
+.noVG {
+    margin-top: 2rem;
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 30%;
+    box-shadow: 1rem 0px 20px 1rem rgba(0, 0, 0, 0.304);
+    background-color: rgba(186, 20, 89, 0.137);
+}
+
+.noVG h1 {
+    color: white;
+    width: 90%;
+    height: 30%;
+    display: flex;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem 2rem 0 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.noVG button {
+    font-size: 1rem;
+    border: none;
+    width: 100%;
+    height: 100%;
+    color: white;
+    background-color: #232526;
+    cursor: pointer;
+}
+
+.noVG a {
+    width: 60%;
+    height: 100%;
+    margin: 0;
+    height: 20%;
+}
+
+.noVG button:hover {
+    font-size: 1rem;
+    border: none;
+    width: 100%;
+    height: 100%;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.509);
 }

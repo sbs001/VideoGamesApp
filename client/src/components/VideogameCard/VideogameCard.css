@@ -8,13 +8,13 @@
     border-radius: 2rem;
     background: #000000;
     background: -webkit-linear-gradient(to right, #434343, #000000);
-    background: linear-gradient(to right, #434343, #000000);
+    background: linear-gradient(to right, #740505, #000000);
     box-shadow: 1px 4px 8px 0 rgba(0, 0, 0, 0);
     transition: 0.3s;
 }
 
 .card:hover {
-    box-shadow: 1rem 12px 20px 1rem rgba(0, 0, 0, 0.304);
+    box-shadow: 0 8px 16px 1rem rgba(82, 18, 18, 0.496);
     transform: scale(1.1);
     transition: 0.2s;
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 import { sortAscending, sortDescending, sortRatingAsc, sortRatingDes } from '../../store/actions/filterActions';
 import { getVideogamePage } from '../../store/actions/videogamesActions'
 import VideogameCard from '../VideogameCard/VideogameCard';
@@ -22,7 +23,12 @@ export function Page(props) {
         setClick(!click);
         props[e.target.name](props.actualPage)
     }
-
+    if((!props.actualPage.length )&& (props.page === 0)) return (
+        <div className='ctnPage'><div className='noVG'>
+            <h1>No video games added...</h1>
+            <Link to='./home/add'><button>ADD NEW VIDEO GAME</button></Link>
+        </div></div>
+    )
     return (
         <div className='ctnPage'>
             <div className='btns'>

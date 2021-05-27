@@ -2,40 +2,21 @@
     position: fixed;
     height: 100%;
     width: 100%;
-    background-image: url('../../imgs/fondo-neon.jpg');
-    background-attachment: scroll;
-    background-attachment: fixed;
-    background-size: contain;
+    background-color: rgba(0, 0, 0, 0.475);
+    background-image: url('../../imgs/fondo1.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
-.play {
+.start {
     background-color: white;
-    margin-top: 200px;
+    margin-top: 18%;
     border: white 2px solid;
     border-radius: 2.5rem;
 }
 
-.play:hover {
-    transform: scale(1.2);
-    transition: 0.2s;
-    box-shadow: 0 20px 30px 2rem rgba(85, 7, 63, 0.678);
-}
-
-.ctnWellcome {
-    display: flex;
-    width: 100%;
-    height: 35%;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(247, 247, 247, 0.188);
-}
-
-.wellcome {
-    width: 80%;
-    height: 80%;
-    background-color: rgba(0, 0, 0, 0.475);
-    color: white;
-    font-size: 2rem;
-    font-style: oblique;
-    font-family: 'Courier New', Courier, monospace;
+.start:hover {
+    transform: scale(1.5);
+    transition: 0.5s;
+    box-shadow: 0 20px 30px 3rem rgba(201, 189, 198, 0.678);
 }

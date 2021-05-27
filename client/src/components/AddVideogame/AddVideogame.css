@@ -68,7 +68,8 @@
 
 .imgAdd {
     background-color: rgba(13, 137, 17, 0.571);
-    margin-left: 4em;
+    margin-left: 2rem;
     margin-top: 1rem;
+    margin-bottom: 1rem;
     border-radius: 1rem;
 }
