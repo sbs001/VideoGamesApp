@@ -14,7 +14,7 @@ export const get = (url, actionType, page = 0) => {
 }
 
 
-export const restartStatus = () => {
+export const restartDetail = () => {
     return {
         type: RESTART_DETAIL,
         payload: {}

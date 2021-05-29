@@ -10,7 +10,7 @@ export function Menu(props) {
 
     const [side, setSide] = useState(false);
 
-    const handleGenreClick = (e) => { console.log('click'); props.getVideogameByGenre(e.target.id) };
+    const handleGenreClick = (e) => { props.getVideogameByGenre(e.target.id) };
 
     const handleClick = (e) => {
         (e.target.name === 'web') ? props.getWebVideogames() : props.getMyVideogames()
@@ -26,7 +26,7 @@ export function Menu(props) {
                 <button className='btnOp' name='added' onClick={handleClick}>My video games</button>
 
                 <button className='btnOp' onClick={(e) => setSide(!side)} >By genres ▼ </button>
-            {!side ? null : props.genres.map(e => <button className='btnMenu' id={e.id} onClick={handleGenreClick}>{e.name}</button>)}
+                {!side ? null : props.genres.map(e => <button className='btnMenu' id={e.id} onClick={handleGenreClick}>{e.name}</button>)}
             </div>
             <img src={img} alt='' />
         </div>

@@ -25,15 +25,16 @@ export function AddVideogames(props) {
     useEffect(() => {
         props.getPlatforms();
     }, []);
-
+    
     useEffect(() => {
-        if (errors.empty){
+        if (errors.empty) {
             axios.post(URL_VIDEOGAMES, { ...form, ...imgs })
-                .catch(err => console.log(err));
-                setVideogamePosted(true)}
+            .catch(err => console.log(err));
+            setVideogamePosted(true);
+        }
 
     }, [errors.empty]);
-    
+
     const handleInputImg = (e) => {
         setImgs({ ...imgs, [e.target.name]: e.target.value })
 
