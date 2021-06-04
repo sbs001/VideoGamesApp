@@ -35,18 +35,16 @@
     background-size: contain;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 608px;
 }
 
 .ctnForm {
     background-color: rgba(177, 149, 149, 0.582);
     width: 80%;
-    height: 85%;
+    height: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 4rem;
+    margin-top: 3.5rem;
 }
 
 .ctn1 {

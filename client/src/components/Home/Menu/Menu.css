@@ -52,4 +52,6 @@
     color: #f1f1f1;
     background-color: rgba(235, 12, 56, 0.907);
     cursor: pointer;
+    transform: scale(1.5);
+    transition: 0.3s;
 }

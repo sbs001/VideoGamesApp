@@ -11,7 +11,7 @@ export function VideogameDetail(props) {
         props.getVideogameDetail(props.match.params.id);
     }, [])
 
-    if (!props.isOK) return <h1><strong>loading...</strong></h1>
+    if (!props.isOK) return <h1 className='detail'><strong>loading...</strong></h1>
     return (
         <div className='detail'>
             <div className='back'>

@@ -1,7 +1,7 @@
 .ctnPage {
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 85%;
 }
 
 .btns {
@@ -31,10 +31,22 @@
     display: flex;
     justify-content: center;
     width: 20%;
-    height: 19rem;
+    height: 24rem;
     border: rgba(65, 6, 6, 0.557) 1px solid;
     border-radius: 2rem;
     margin-block: 2rem;
+}
+
+@media (max-width: 1500px) {
+    .cards {
+        display: flex;
+        justify-content: center;
+        width: 30%;
+        height: 24rem;
+        border: rgba(65, 6, 6, 0.557) 1px solid;
+        border-radius: 2rem;
+        margin-block: 2rem;
+    }
 }
 
 .btns {
@@ -66,6 +78,7 @@
     border-radius: 2rem;
     color: white;
     background-color: rgba(235, 12, 56, 0.907);
+    transition: 0.3s;
 }
 
 .btns div {

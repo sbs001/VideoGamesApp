@@ -8,7 +8,7 @@ export default function About() {
         <div>
             <br /> <br /><br /> <br /><br /> <br />
             <Link to='/home'>
-                <img src={img} alt='' />
+                <img  src={img} alt='' />
             </Link>
 
         </div>

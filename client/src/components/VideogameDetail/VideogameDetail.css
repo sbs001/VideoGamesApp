@@ -6,16 +6,21 @@
      align-items: center;
  }
  
+ strong {
+     margin-top: 5rem;
+     font-size: 3rem;
+ }
+ 
  .back {
      background-color: rgba(128, 128, 128, 0.256);
      width: 90%;
-     height: 90%;
      border-radius: 2rem;
      display: flex;
      flex-direction: column;
  }
  
  .imgDetail {
+     margin-top: 2rem;
      width: 45%;
      height: 90%;
      box-shadow: 1rem 12px 20px 1rem rgba(0, 0, 0, 0.304);
@@ -23,7 +28,7 @@
  }
  
  .div1 {
-     height: 24rem;
+     height: 50%;
      width: 100%;
      display: flex;
      flex-direction: row;

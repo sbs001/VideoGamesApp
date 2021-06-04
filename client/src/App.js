@@ -12,6 +12,7 @@ import About from './components/About/About';
 
 
 function App() {
+  
   return (
     <div className="App">
       <Route exact path='/' component={LandingPage} />
