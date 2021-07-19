@@ -1,4 +1,4 @@
-import { GET_PAGE, GET_DETAIL, RESTART_DETAIL, GET_GENRES, GET_PLATFORMS, SORT_PAGE } from '../../consts';
+import { GET_PAGE, GET_DETAIL, RESTART_DETAIL, GET_GENRES, GET_PLATFORMS, SORT_PAGE, RESTART_PAGE } from '../../consts';
 
 const initialState = {
     actualPage: { page: [], number: null },
@@ -31,6 +31,14 @@ const reducer = (state = initialState, action) => {
                 return {
                     ...state,
                     videogame: { detail: {}, ok: false }
+                }
+            }
+
+        case RESTART_PAGE:
+            {
+                return {
+                    ...state,
+                    actualPage: { page: [], number: null }
                 }
             }
 

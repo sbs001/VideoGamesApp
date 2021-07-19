@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
+import { restartPage } from '../../store/actions';
 import { sortAscending, sortDescending, sortRatingAsc, sortRatingDes } from '../../store/actions/filterActions';
 import { getVideogamePage } from '../../store/actions/videogamesActions'
 import VideogameCard from '../VideogameCard/VideogameCard';
@@ -14,6 +15,7 @@ export function Page(props) {
 
 
     const handleChangePages = (e) => {
+        props.restartPage();
         if (e.target.name === 'next') return props.getVideogamePage(props.page + 1);
         if (e.target.name === 'prev') return props.getVideogamePage(props.page + -1);
         return props.getVideogamePage();
@@ -69,6 +71,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
     return {
+        restartPage: () => dispatch(restartPage()),
         getVideogamePage: (page) => dispatch(getVideogamePage(page)),
         sortAscending: (arr) => dispatch(sortAscending(arr)),
         sortDescending: (arr) => dispatch(sortDescending(arr)),

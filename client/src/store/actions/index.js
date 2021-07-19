@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { RESTART_DETAIL } from '../../consts'
+import { RESTART_DETAIL, RESTART_PAGE } from '../../consts'
 
 
 export const get = (url, actionType, page = 0) => {
@@ -17,6 +17,13 @@ export const get = (url, actionType, page = 0) => {
 export const restartDetail = () => {
     return {
         type: RESTART_DETAIL,
+        payload: {}
+    }
+}
+
+export const restartPage = () => {
+    return {
+        type: RESTART_PAGE,
         payload: {}
     }
 }
