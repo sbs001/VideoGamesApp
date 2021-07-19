@@ -18,10 +18,14 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const { conn, Platform } = require('./src/db.js');
+const { conn, Platform, Genre } = require('./src/db.js');
+const axios = require('axios');
+const { API_URL_GENRES, API_KEY } = process.env;
+
 
 const datos = [{ name: 'PC' }, { name: 'PlayStation 5' }, { name: 'Xbox One' }, { name: 'PlayStation 4' }, { name: 'Nintendo Switch' }, { name: 'Nintendo 64' },
-{ name: 'Sega' }, { name: 'Android' }, { name: 'PlayStation 3' }, { name: 'Nintendo WII' }, { name: ' Nintendo Gameboy' }];
+    { name: 'Sega' }, { name: 'Android' }, { name: 'PlayStation 3' }, { name: 'Nintendo WII' }, { name: ' Nintendo Gameboy' }
+];
 
 
 
@@ -29,10 +33,13 @@ const datos = [{ name: 'PC' }, { name: 'PlayStation 5' }, { name: 'Xbox One' }, 
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  
-  datos.forEach(plat => Platform.create(plat));
-  
-  server.listen(3001, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
-  });
+
+    datos.forEach(plat => Platform.create(plat));
+
+    axios.get(`${API_URL_GENRES}${API_KEY}`)
+        .then(genres => genres.data.results.forEach(genre => Genre.create({ id: genre.id, name: genre.name })))
+        .then(() => server.listen(3001, () => {
+            console.log('%s listening at 3001'); // eslint-disable-line no-console
+        }))
+
 });
