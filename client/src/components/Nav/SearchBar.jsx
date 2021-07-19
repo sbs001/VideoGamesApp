@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from "react-redux";
+import { restartPage } from '../../store/actions';
 import { searchVideogame } from '../../store/actions/videogamesActions'
 import './SearchBar.css';
 
@@ -13,6 +14,7 @@ export function SearchBar(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        props.restartPage();
         props.searchVideogame(input);
         document.getElementById('searchBar').reset()
     
@@ -27,4 +29,4 @@ export function SearchBar(props) {
     )
 }
 
-export default connect(null, { searchVideogame })(SearchBar);
+export default connect(null, { searchVideogame,restartPage })(SearchBar);

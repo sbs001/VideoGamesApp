@@ -4,15 +4,20 @@ import img from '../../../imgs/gamer-zone.jpg';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getMyVideogames, getVideogameByGenre, getWebVideogames } from '../../../store/actions/videogamesActions';
+import { restartPage } from '../../../store/actions';
 
 
 export function Menu(props) {
 
     const [side, setSide] = useState(false);
 
-    const handleGenreClick = (e) => { props.getVideogameByGenre(e.target.id) };
+    const handleGenreClick = (e) => { 
+        props.restartPage();;
+        props.getVideogameByGenre(e.target.id) 
+    };
 
     const handleClick = (e) => {
+        props.restartPage();
         (e.target.name === 'web') ? props.getWebVideogames() : props.getMyVideogames()
     };
 
@@ -40,6 +45,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
+        restartPage: () => dispatch(restartPage()),
         getVideogameByGenre: (id) => dispatch(getVideogameByGenre(id)),
         getMyVideogames: () => dispatch(getMyVideogames()),
         getWebVideogames: (page) => dispatch(getWebVideogames(page))

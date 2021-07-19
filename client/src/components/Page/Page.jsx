@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { restartPage } from '../../store/actions';
 import { sortAscending, sortDescending, sortRatingAsc, sortRatingDes } from '../../store/actions/filterActions';
 import { getVideogamePage } from '../../store/actions/videogamesActions'
+import Spiner from '../Spiner/Spiner';
 import VideogameCard from '../VideogameCard/VideogameCard';
 import './Page.css';
 
@@ -25,8 +26,8 @@ export function Page(props) {
         setClick(!click);
         props[e.target.name](props.actualPage)
     }
-    
-    if((!props.actualPage.length )&& (props.page === 0)) return (
+
+    if ((!props.actualPage.length) && (props.page === 0)) return (
         <div className='ctnPage'><div className='noVG'>
             <h1>No video games added...</h1>
             <Link to='./home/add'><button>ADD NEW VIDEO GAME</button></Link>
@@ -47,14 +48,20 @@ export function Page(props) {
                 <span><b>{props.page}</b></span>
                 <button className='i' name='next' disabled={props.page === 0} onClick={handleChangePages}> NEXT 🡺</button>
             </div>
-
             <div className='page'>
-                {props.actualPage.map(element => {
-                    return (
-                        <div className='cards fadeInSlow'>
-                            <VideogameCard videogame={element} />
-                        </div>)
-                })}
+
+                {
+                    props.actualPage.length ?
+                        
+                            props.actualPage.map(element => {
+                                return (
+                                    <div className='cards fadeInSlow'>
+                                        <VideogameCard videogame={element} />
+                                    </div>)
+                            })
+                         :
+                        <Spiner />
+                }
             </div>
         </div>
     )
