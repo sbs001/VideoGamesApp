@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { getVideogameDetail } from '../../store/actions/videogamesActions'
 import { connect } from 'react-redux';
@@ -10,7 +11,7 @@ export function VideogameDetail(props) {
 
     useEffect(() => {
         props.getVideogameDetail(props.match.params.id);
-    })
+    },[])
 
     if (!props.isOK) return <Spiner />
     return (

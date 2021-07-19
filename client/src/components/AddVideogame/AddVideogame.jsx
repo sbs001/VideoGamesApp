@@ -25,7 +25,7 @@ export function AddVideogames(props) {
 
     useEffect(() => {
         props.getPlatforms();
-    });
+    },[]);
     
     useEffect(() => {
         if (errors.empty) {

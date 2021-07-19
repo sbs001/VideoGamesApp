@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import Page from '../Page/Page';
 import './Home.css';
@@ -15,7 +16,7 @@ export function Home(props) {
             if (!props.actualPage.page.length) props.getVideogamePage();
         if (!props.genres.length) props.getGenres()
         props.restartDetail();
-    })
+    },[])
 
 
     return (
