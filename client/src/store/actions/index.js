@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { RESTART_DETAIL, RESTART_PAGE } from '../../consts'
+import { RESTART_DETAIL, RESTART_PAGE, SEARCH } from '../../consts'
 
 
 export const get = (url, actionType, page = 0) => {
@@ -24,6 +24,13 @@ export const restartDetail = () => {
 export const restartPage = () => {
     return {
         type: RESTART_PAGE,
+        payload: {}
+    }
+}
+
+export const isSearch = () => {
+    return {
+        type: SEARCH,
         payload: {}
     }
 }

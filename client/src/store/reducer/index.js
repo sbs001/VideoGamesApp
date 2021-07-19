@@ -1,7 +1,7 @@
-import { GET_PAGE, GET_DETAIL, RESTART_DETAIL, GET_GENRES, GET_PLATFORMS, SORT_PAGE, RESTART_PAGE } from '../../consts';
+import { GET_PAGE, GET_DETAIL, RESTART_DETAIL, GET_GENRES, GET_PLATFORMS, SORT_PAGE, RESTART_PAGE, SEARCH } from '../../consts';
 
 const initialState = {
-    actualPage: { page: [], number: null },
+    actualPage: { page: [], number: null, isSeach: false },
     genres: [],
     platforms: [],
     videogame: { detail: {}, ok: false }
@@ -31,6 +31,13 @@ const reducer = (state = initialState, action) => {
                 return {
                     ...state,
                     videogame: { detail: {}, ok: false }
+                }
+            }
+        case SEARCH:
+            {
+                return {
+                    ...state,
+                    actualPage: {...state.actualPage, isSeach: !state.actualPage.isSeach },
                 }
             }
 
