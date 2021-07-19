@@ -14,7 +14,7 @@ export default function VideogameCard(props) {
             <h3>{props.videogame.name}</h3>
 
             <div className='genresCard'>
-                {props.videogame.genres.map(genre => <li>{genre.name}</li>)}
+                {props.videogame.genres.map((genre , i) => <li key={i}>{genre.name}</li>)}
             </div>
 
         </div>

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { getPlatforms } from '../../store/actions/platformsActions'
 import { connect } from 'react-redux';
@@ -24,12 +25,11 @@ export function AddVideogames(props) {
 
     useEffect(() => {
         props.getPlatforms();
-    }, []);
+    });
     
     useEffect(() => {
         if (errors.empty) {
             axios.post(URL_VIDEOGAMES, { ...form, ...imgs })
-            .catch(err => console.log(err));
             setVideogamePosted(true);
         }
 

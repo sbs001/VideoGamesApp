@@ -15,7 +15,7 @@ export function Home(props) {
             if (!props.actualPage.page.length) props.getVideogamePage();
         if (!props.genres.length) props.getGenres()
         props.restartDetail();
-    }, [])
+    })
 
 
     return (

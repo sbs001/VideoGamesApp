@@ -31,7 +31,7 @@ export function Menu(props) {
                 <button className='btnOp' name='added' onClick={handleClick}>My video games</button>
 
                 <button className='btnOp' onClick={(e) => setSide(!side)} >By genres ▼ </button>
-                {!side ? null : props.genres.map(e => <button className='btnMenu' id={e.id} onClick={handleGenreClick}>{e.name}</button>)}
+                {!side ? null : props.genres.map((e,i) => <button key={i} className='btnMenu' id={e.id} onClick={handleGenreClick}>{e.name}</button>)}
             </div>
             <img src={img} alt='' />
         </div>

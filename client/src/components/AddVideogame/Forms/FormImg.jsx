@@ -3,7 +3,6 @@ import './Form.css';
 
 
 export default function FormImg({ onChange, imgs }) {
-console.log(imgs)
     return (
         <div className='formImg'>
 

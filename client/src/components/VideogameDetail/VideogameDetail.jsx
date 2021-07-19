@@ -10,7 +10,7 @@ export function VideogameDetail(props) {
 
     useEffect(() => {
         props.getVideogameDetail(props.match.params.id);
-    }, [])
+    })
 
     if (!props.isOK) return <Spiner />
     return (
@@ -25,7 +25,7 @@ export function VideogameDetail(props) {
                             <div className='list'>
                                 <p>Genres:</p>
                                 <ul>
-                                    {props.videogame.genres.map(genre => <li>{genre.name}</li>)}
+                                    {props.videogame.genres.map((genre, i) => <li key={i}>{genre.name}</li>)}
                                 </ul>
                             </div>
                             <div className='p'>
@@ -35,7 +35,7 @@ export function VideogameDetail(props) {
                             <div className='list'>
                                 <p>Platforms:</p>
                                 <ul>
-                                    {props.videogame.platforms.map(e => e.name ? <li>{e.name}</li> : <li>{e.platform.name}</li>)}
+                                    {props.videogame.platforms.map((e, i) => e.name ? <li key={i}>{e.name}</li> : <li key={i}>{e.platform.name}</li>)}
                                 </ul>
                             </div>
 

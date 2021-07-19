@@ -53,9 +53,9 @@ export function Page(props) {
                 {
                     props.actualPage.length ?
                         
-                            props.actualPage.map(element => {
+                            props.actualPage.map((element, i) => {
                                 return (
-                                    <div className='cards fadeInSlow'>
+                                    <div className='cards fadeInSlow' key={i}>
                                         <VideogameCard videogame={element} />
                                     </div>)
                             })
