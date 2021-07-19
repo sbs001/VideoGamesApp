@@ -12,6 +12,7 @@
     background-color: #f1f1f1;
     border: black 2px solid;
     border-radius: 2rem 0 0 2rem;
+    outline: none;
 }
 
 .searchBtn {

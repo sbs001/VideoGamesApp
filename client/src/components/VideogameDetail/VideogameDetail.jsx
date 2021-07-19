@@ -3,6 +3,7 @@ import { getVideogameDetail } from '../../store/actions/videogamesActions'
 import { connect } from 'react-redux';
 import './VideogameDetail.css';
 import { Link } from 'react-router-dom';
+import Spiner from '../Spiner/Spiner'
 
 
 export function VideogameDetail(props) {
@@ -11,7 +12,7 @@ export function VideogameDetail(props) {
         props.getVideogameDetail(props.match.params.id);
     }, [])
 
-    if (!props.isOK) return <h1 className='detail'><strong>loading...</strong></h1>
+    if (!props.isOK) return <Spiner />
     return (
         <div className='detail fadeIn'>
             <div className='back'>
