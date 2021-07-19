@@ -1,7 +1,7 @@
 import { GET_PAGE, GET_DETAIL, RESTART_DETAIL, GET_GENRES, GET_PLATFORMS, SORT_PAGE, RESTART_PAGE, SEARCH } from '../../consts';
 
 const initialState = {
-    actualPage: { page: [], number: null, isSeach: false },
+    actualPage: { page: [], number: null, isSearch: false },
     genres: [],
     platforms: [],
     videogame: { detail: {}, ok: false }
@@ -37,7 +37,7 @@ const reducer = (state = initialState, action) => {
             {
                 return {
                     ...state,
-                    actualPage: {...state.actualPage, isSeach: !state.actualPage.isSeach },
+                    actualPage: {...state.actualPage, isSearch: !state.actualPage.isSeach },
                 }
             }
 

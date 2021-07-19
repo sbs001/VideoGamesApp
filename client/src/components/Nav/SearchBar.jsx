@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from "react-redux";
-import { restartPage } from '../../store/actions';
+import { isSearch, restartPage } from '../../store/actions';
 import { searchVideogame } from '../../store/actions/videogamesActions'
 import './SearchBar.css';
 
@@ -16,8 +16,12 @@ export function SearchBar(props) {
         e.preventDefault();
         props.restartPage();
         props.searchVideogame(input);
-        document.getElementById('searchBar').reset()
-    
+        document.getElementById('searchBar').reset();
+        if (window.location.pathname !== '/home'){
+            props.isSearch();
+            window.history.back();
+        }
+       
     };
 
     return (
@@ -29,4 +33,4 @@ export function SearchBar(props) {
     )
 }
 
-export default connect(null, { searchVideogame,restartPage })(SearchBar);
+export default connect(null, { searchVideogame,restartPage,isSearch })(SearchBar);

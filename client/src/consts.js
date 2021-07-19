@@ -19,6 +19,7 @@ export const GET_GENRES = 'GET_GENRES';
 export const GET_PLATFORMS = 'GET_PLATFORMS';
 export const RESTART_DETAIL = 'RESTART_DETAIL';
 export const RESTART_PAGE = 'RESTART_PAGE';
+export const SEARCH = 'SEARCH';
 
 export const SORT_PAGE = 'SORT_PAGE';
 

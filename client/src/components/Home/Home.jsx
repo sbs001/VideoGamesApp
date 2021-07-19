@@ -2,15 +2,17 @@ import React, { useEffect } from 'react';
 import Page from '../Page/Page';
 import './Home.css';
 import { getVideogamePage } from '../../store/actions/videogamesActions'
-import { restartDetail } from '../../store/actions/index'
+import { isSearch, restartDetail } from '../../store/actions/index'
 import { connect } from 'react-redux';
 import Menu from './Menu/Menu';
 import { getGenres } from '../../store/actions/genresActions';
 
 export function Home(props) {
-
     useEffect(() => {
-        if (props.page === null) props.getVideogamePage();
+        if(props.actualPage.isSearch)
+            props.isSearch();
+        else
+            if (!props.actualPage.page.length) props.getVideogamePage();
         if (!props.genres.length) props.getGenres()
         props.restartDetail();
     }, [])
@@ -33,11 +35,12 @@ const mapDispatchToProps = (dispatch) => {
         getVideogamePage: (page) => dispatch(getVideogamePage(page)),
         restartDetail: () => dispatch(restartDetail()),
         getGenres: () => dispatch(getGenres()),
+        isSearch: () => dispatch(isSearch()),
     }
 };
 const mapStateToProps = (state) => {
     return {
-        actualPage: state.actualPage.page,
+        actualPage: state.actualPage,
         page: state.actualPage.number,
         genres: state.genres,
     }
