@@ -31,7 +31,7 @@ export function Page(props) {
         </div></div>
     )
     return (
-        <div className='ctnPage'>
+        <div className='ctnPage fadeInFast'>
             <div className='btns'>
                 <button id='x' name='x' onClick={handleChangePages} >❎</button>
                 <button name='sortAscending' onClick={handleClick}>A-Z ⮭</button>
@@ -49,7 +49,7 @@ export function Page(props) {
             <div className='page'>
                 {props.actualPage.map(element => {
                     return (
-                        <div className='cards'>
+                        <div className='cards fadeInSlow'>
                             <VideogameCard videogame={element} />
                         </div>)
                 })}

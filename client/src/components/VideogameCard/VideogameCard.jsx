@@ -5,7 +5,7 @@ import altImg from '../../imgs/alt.jpg';
 
 export default function VideogameCard(props) {
     return (
-        <div className='card'>
+        <div className='card fadeIn'>
             <div className='ctnImg'>
                 <Link to={`/home/videogame/${props.videogame.id}`}>
                     <img className='imgCard' src={props.videogame.background_image || altImg} alt='' />

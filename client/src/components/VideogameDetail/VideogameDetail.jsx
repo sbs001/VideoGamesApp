@@ -13,7 +13,7 @@ export function VideogameDetail(props) {
 
     if (!props.isOK) return <h1 className='detail'><strong>loading...</strong></h1>
     return (
-        <div className='detail'>
+        <div className='detail fadeIn'>
             <div className='back'>
 
                 <div className='div1'>
@@ -22,16 +22,20 @@ export function VideogameDetail(props) {
                         <h1>{props.videogame.name}</h1>
                         <div className='info'>
                             <div className='list'>
-                            <span>Genres:</span>
-                                {props.videogame.genres.map(genre => <li>{genre.name}</li>)}
+                                <p>Genres:</p>
+                                <ul>
+                                    {props.videogame.genres.map(genre => <li>{genre.name}</li>)}
+                                </ul>
                             </div>
                             <div className='p'>
                                 <p>Rating: {props.videogame.rating}</p>
                                 <p>Released Date: {props.videogame.released}</p>
                             </div>
                             <div className='list'>
-                            <span>Platforms:</span>
-                                {props.videogame.platforms.map(e => e.name ? <li>{e.name}</li> : <li>{e.platform.name}</li>)}
+                                <p>Platforms:</p>
+                                <ul>
+                                    {props.videogame.platforms.map(e => e.name ? <li>{e.name}</li> : <li>{e.platform.name}</li>)}
+                                </ul>
                             </div>
 
                         </div>

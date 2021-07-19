@@ -79,13 +79,21 @@
      width: 90%;
      height: 40%;
      display: flex;
-     justify-content: space-evenly;
-     flex-flow: column wrap;
+     flex-flow: row wrap;
      align-items: flex-start;
  }
  
- .list li {
+ .list ul {
+     width: 60%;
+     display: flex;
+     flex-flow: row wrap;
+     align-items: flex-start;
+ }
+ 
+ .list ul li {
      width: 30%;
+     text-align: left;
+     padding-left: 0;
  }
  /*  */
  

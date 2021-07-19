@@ -17,3 +17,24 @@ body {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+.fadeIn {
+    animation: fadeIn linear 0.6s;
+}
+
+.fadeInFast {
+    animation: fadeIn linear 0.3s;
+}
+
+.fadeInSlow {
+    animation: fadeIn linear 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
