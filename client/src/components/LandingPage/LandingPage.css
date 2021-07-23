@@ -13,10 +13,33 @@
     margin-top: 18%;
     border: white 2px solid;
     border-radius: 2.5rem;
+    transition: 0.5s;
+    animation: start 2s ease-in-out;
 }
 
 .start:hover {
     transform: scale(1.5);
-    transition: 0.5s;
-    box-shadow: 0 20px 30px 3rem rgba(201, 189, 198, 0.678);
+    box-shadow: 0 0 30px 3rem rgba(201, 189, 198, 0.678);
+}
+
+@keyframes start {
+    0% {
+        transform: scale(0);
+    }
+    25% {
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0;
+    }
+    60% {}
+    70% {
+        transform: translateY(-500px);
+    }
+    80% {
+        display: block;
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
